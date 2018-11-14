@@ -1,8 +1,5 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
+	"description": "项目配置文件。",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
@@ -11,13 +8,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
-	"appid": "wx118364baff9771bc",
-	"projectname": "WeEdit_edit",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
+	"libVersion": "1.9.94",
+	"appid": "touristappid",
+	"projectname": "WeEdit%E6%B5%8B%E8%AF%95%E7%89%88",
 	"condition": {
 		"search": {
 			"current": -1,
