@@ -1,0 +1,30 @@
+<view>
+  <view class="row">
+  <view class="title">事件名</view>
+  <view class="info">
+  <input class="info-input"  bindinput="handleMessageChange" placeholder="2~100个字"/>
+  </view>
+  </view>
+  
+  <view class="row">
+  <label class="title">事件地点</label>
+  <view class="info">
+  <input class="info-input"  bindinput="handleAddressChange" placeholder="2~100个字"/>
+</view></view>
+
+  <view class="row">
+  <lable class="title">时间</lable>
+  <view class="info" bindtap='handleAddressClick'>选择</view>
+  </view>
+
+
+  <view class="rows">
+  <label class="titles">事件描述</label>
+  <view class="info">
+  <input class="info-input"  bindinput="handlethingsChange" placeholder="2~20000个字"/>
+</view>
+
+
+  </view>
+  <view class="submit-button" bindtap='handleSubmit'>发布</view>
+</view>
