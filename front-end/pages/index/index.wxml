@@ -26,7 +26,10 @@
      <view>共享编辑</view></view>
 
  <view class="nav-item">
-     <view><image src="/image/海报/签到 (1).png" style="width:25px;height:23px;"></image></view>
+ <navigator  style='display:inline;' url="/pages/Sign/Sign">
+  <view><image src="/image/海报/签到 (1).png" style="width:25px;height:23px;"></image></view>
+    
+ </navigator>
      <view>签到</view></view>
 
      <view class="hr"></view>
@@ -35,11 +38,15 @@
 
 <view class="nav">
  <view class="nav-item">
+ <navigator  style='display:inline;' url="/pages/Vote/Vote">
      <view><image src="/image/海报/投票.png" style="width:25px;height:23px;"></image></view>
+    </navigator>
      <view>投票</view></view>
 
       <view class="nav-item">
+      <navigator  style='display:inline;' url="/pages/publish/publish">
      <view><image src="/image/海报/想法.png" style="width:25px;height:23px;"></image></view>
+     </navigator>
      <view>想法</view></view>
 
 

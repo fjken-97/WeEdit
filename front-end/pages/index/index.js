@@ -11,6 +11,15 @@ wx.switchTab({
 },
 
 
+  SignBtn: function (options) {
+
+  wx.switchTab({
+    url: '../Sign/Sign',
+  })
+
+},
+
+
   /**
    *    * 页面的初始数据
    *    */
