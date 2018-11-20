@@ -1,6 +1,10 @@
+/* pages/Edit/Edit.wxss */
 page{
   background: #eee;
 }
+
+
+
 
 .row{
   overflow: hidden;
@@ -43,6 +47,12 @@ page{
   height: 50px;
 }
 
+
+.info-input1{
+   line-height: 15px;
+    border-top: 8px solid #ccc;
+  height: 50px;
+}
 .info{
   color: #777;
 }

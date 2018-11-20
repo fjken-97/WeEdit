@@ -8,9 +8,6 @@
 <view class="textset1"> <text space="emsp">admin      2018-11-16 19:00      8人已读</text> </view>
 
 
-
-
-
 <checkbox-group bindchange="checkboxChange">
     <label class="checkbox" wx:for-items="{{items}}">
         <checkbox value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}

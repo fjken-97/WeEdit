@@ -1,13 +1,14 @@
 {
   "pages": [
+    "pages/message/message",
+    "pages/me/me",
     "pages/index/index",
     "pages/Vote/Vote",
     "pages/Sign/Sign",
-    
     "pages/publish/publish",
-    "pages/me/me",
-    "pages/message/message"
-   
+ 
+    "pages/practice/practice",
+    "pages/Edit/Edit"
   ],
   "window": {
     "backgroundTextStyle": "light",
