@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.demo.dao.WeEdit">
+	<select id="queryConditionBy2ID" resultType="com.imooc.demo.entity.UserCondition">
+		SELECT * 
+		FROM user_condition 
+		WHERE voteID=#{voteID} AND userID=#{userID}
+	</select>
+	
+	<select id="queryConditionBy3ID" resultType="com.imooc.demo.entity.UserCondition">
+		SELECT *
+		FROM user_condition
+		WHERE
+		voteID=#{voteID} AND userID=#{userID} AND choiceNumber=#{choiceNumber}
+	</select>
+	
+	
+	<select id="queryCountByID" resultType="com.imooc.demo.entity.VoteChoice">
+		SELECT *
+		FROM vote_choice
+		WHERE
+		voteID = #{voteID} 
+		AND 
+		choiceNumber = 
+		#{choiceNumber}
+	</select>
+	
+	
+	<select id="queryVoteInfoById" resultType="com.imooc.demo.entity.VoteInfo">
+		SELECT *
+		FROM vote_infomation
+		WHERE
+		voteID =#{voteID}
+	</select>
+	
+	<insert id="insertVoteInfo" useGeneratedKeys="true" keyProperty="voteInfoId"
+		keyColumn="voteID" parameterType="com.imooc.demo.entity.VoteInfo">
+		INSERT INTO
+		vote_infomation(voteID,userID,launchTime,deadLine,isFaceless,voteAttri)
+		VALUES
+		(#{voteID},#{userID},#{launchTime},#{deadLine},#{isFaceless},#{voteAttri})
+	</insert>
+	
+	<update id="updateCount" parameterType="com.imooc.demo.entity.VoteChoice">
+		UPDATE vote_choice  
+		SET choiceCount=#{count} 
+		WHERE voteID=#{voteID} AND choiceNumber=#{choiceNumber}
+	</update>
+	
+	<delete id="deleteVoteInfo">
+		DELETE FROM
+		vote_infomation
+		WHERE
+		voteID =
+		#{voteInfoId}
+	</delete>
+	
+	<insert id="insertChoice" useGeneratedKeys="true" keyProperty="voteID"
+		keyColumn="voteID" parameterType="com.imooc.demo.entity.VoteChoice">
+		INSERT INTO
+		vote_choice(voteID,choice,choiceCount,choiceNumber)
+		VALUES
+		(#{voteID},#{choice},#{choiceCount},#{choiceNumber})
+	</insert>
+	
+	<insert id="insertVoteComm" useGeneratedKeys="true"  parameterType="com.imooc.demo.entity.VoteComm">
+		INSERT INTO
+		vote_comm(voteID,userID,comment)
+		VALUES
+		(#{voteID},#{userID},#{comment})
+	</insert>
+	
+	<insert id="insertUserCondition" useGeneratedKeys="true"  parameterType="com.imooc.demo.entity.UserCondition">
+		INSERT INTO
+		user_condition(voteID,userID,choiceNumber,voteTime)
+		VALUES
+		(#{voteID},#{userID},#{choiceNumber},#{voteTime})
+	</insert>
+	
+	
+</mapper>
+    

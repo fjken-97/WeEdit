@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
  * 对标spring-service里面的transactionManager
  * 继承TransactionManagementConfigurer是因为开启annotation-driven
  * 
- * @author xiangze
  *
  */
 @Configuration
