@@ -2,14 +2,14 @@ package com.imooc.demo.entity;
 
 public class UserCondition {
 
-	private String voteID;
+	private int voteID;
 	private String userID;
 	private int choiceNumber;
 	private String voteTime;
-	public String getVoteID() {
+	public int getVoteID() {
 		return voteID;
 	}
-	public void setVoteID(String voteID) {
+	public void setVoteID(int voteID) {
 		this.voteID = voteID;
 	}
 	public String getUserID() {

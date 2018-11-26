@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.imooc.demo.dao.WeEdit;
+import com.imooc.demo.entity.GroupMember;
 import com.imooc.demo.entity.UserCondition;
 import com.imooc.demo.entity.VoteChoice;
 import com.imooc.demo.entity.VoteComm;
@@ -27,7 +28,7 @@ public class ServiceImpl implements WeEditService {
 
 
 	@Override
-	public VoteInfo getVoteInfoById(String voteInfoId) {
+	public VoteInfo getVoteInfoById(int voteInfoId) {
 		return weEdit.queryVoteInfoById(voteInfoId);
 	}
 
@@ -35,30 +36,24 @@ public class ServiceImpl implements WeEditService {
 
 	@Transactional
 	@Override
-	public boolean deleteVoteInfo(String voteInfoId) {
+	public boolean deleteVoteInfo(int voteInfoId) {
 		weEdit.deleteVoteInfo(voteInfoId);
 		return true;
 		
 	}
 
 	@Override
-	public boolean addVoteInfo(String voteID,String userID,String deadLine,int isFaceless,int voteAttri) {
+	public boolean addVoteInfo(String userID,String deadLine,int isFaceless,int voteAttri,int groupID) {
+	
+		//weEdit.queryVoteInfoById(voteID);
 		String curTime = tool.getTime();
-		VoteInfo voteInfo = new VoteInfo();
-		voteInfo.setDeadLine(deadLine);
-		voteInfo.setIsFaceless(isFaceless);
-		voteInfo.setUserID(userID);
-		voteInfo.setLaunchTime(curTime);
-		voteInfo.setVoteAttri(voteAttri);
-		voteInfo.setVoteID(voteID);
-		weEdit.queryVoteInfoById(voteID);
-		weEdit.insertVoteInfo(voteInfo);
+		weEdit.insertVoteInfo(userID, curTime, deadLine, isFaceless, voteAttri, groupID);
 		return true;
 	}
 
 	
 	@Override
-	public boolean insertChoice(String voteID,String choice,int num) {
+	public boolean insertChoice(int voteID,String choice,int num) {
 		VoteChoice voteChoice = new VoteChoice();
 		voteChoice.setChoice(choice);
 		voteChoice.setChoiceNumber(num);
@@ -69,7 +64,7 @@ public class ServiceImpl implements WeEditService {
 	}
 	@Transactional
 	@Override
-	public boolean deadLineJudge(String voteID) {
+	public boolean deadLineJudge(int voteID) {
 		VoteInfo temp = getVoteInfoById(voteID);
 		
 		String curTime = tool.getTime();
@@ -81,7 +76,7 @@ public class ServiceImpl implements WeEditService {
 	}
 	
 	@Override
-	public boolean addCount(String voteID,int num) {
+	public boolean addCount(int voteID,int num) {
 		int count = weEdit.queryCountByID(voteID, num).getChoiceCount() + 1;
 		weEdit.updateCount(count, voteID, num);
 		return true;
@@ -89,7 +84,7 @@ public class ServiceImpl implements WeEditService {
 	
 	
 	@Override
-	public boolean voteJudge(String voteID,String userID,int num) {
+	public boolean voteJudge(int voteID,String userID,int num) {
 		int voteAttri = getVoteInfoById(voteID).getVoteAttri();
 		if(voteAttri==1) {
 			UserCondition temp = weEdit.queryConditionBy2ID(voteID,userID);
@@ -106,7 +101,7 @@ public class ServiceImpl implements WeEditService {
 		return true;
 	}
 	@Override
-	public boolean addUserCondition(String voteID,String userID,int choiceNumber) {
+	public boolean addUserCondition(int voteID,String userID,int choiceNumber) {
 		UserCondition userCondition = new UserCondition();
 		String voteTime = tool.getTime();
 		userCondition.setChoiceNumber(choiceNumber);
@@ -120,14 +115,77 @@ public class ServiceImpl implements WeEditService {
 
 
 	@Override
-	public boolean addComm(String voteID, String userID, String comm) {
+	public boolean addComm(int voteID, String userID, String comm) {
 		
 		VoteComm voteComm = new VoteComm();
 		voteComm.setUserID(userID);
 		voteComm.setVoteID(voteID);
 		voteComm.setComment(comm);
 		weEdit.insertVoteComm(voteComm);
-		return false;
+		return true;
+	}
+
+
+
+	@Override
+	public boolean addGroup() {
+		String curTime = tool.getTime();
+		weEdit.insertGroup(curTime, 0);
+		return true;
+	}
+
+
+
+	@Override
+	public boolean addMember(int groupID, String userID, int level) {
+		String curTime = tool.getTime();
+		weEdit.insertMember(groupID, userID, curTime, level);
+		return true;
+	}
+
+
+
+	@Override
+	public List<GroupMember> getGroupByUserID(String userID) {
+		return weEdit.queryGroupByUserID(userID);
+	}
+
+
+	@Override
+	public List<VoteInfo> getVoteInfoByGroupID(int groupID) {
+		return weEdit.queryVoteInfoByGroupID(groupID);
+	}
+
+
+
+	@Override
+	public boolean removeGroup(int groupID) {
+		weEdit.deleteGroup(groupID);
+		return true;
+	}
+
+
+
+	@Override
+	public boolean removeMember(int groupID, String userID) {
+		weEdit.deleteMember(groupID, userID);
+		return true;
+	}
+
+
+
+	@Override
+	public int getGroupSize(int groupID) {
+		
+		return weEdit.queryGroupSize(groupID);
+	}
+
+
+
+	@Override
+	public boolean updateGroupSize(int size, int groupID) {
+		weEdit.updateGroupSize(size, groupID);
+		return true;
 	}
 
 	

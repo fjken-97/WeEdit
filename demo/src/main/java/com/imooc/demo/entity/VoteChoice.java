@@ -2,7 +2,7 @@ package com.imooc.demo.entity;
 
 public class VoteChoice {
 
-		private String voteID;
+		private int voteID;
 		
 		private int choiceNumber;
 		
@@ -10,11 +10,11 @@ public class VoteChoice {
 		
 		private String choice;
 
-		public String getVoteID() {
+		public int getVoteID() {
 			return voteID;
 		}
 
-		public void setVoteID(String voteID) {
+		public void setVoteID(int voteID) {
 			this.voteID = voteID;
 		}
 

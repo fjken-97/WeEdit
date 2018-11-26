@@ -1,9 +1,9 @@
 package com.imooc.demo.entity;
 
 
-public class VoteInfo {
+public class VoteInfo{
 	// 主键ID
-	private String voteID;
+	private int voteID;
 	// 名称
 	private String userID;
 	// 权重，越大越排前显示
@@ -15,11 +15,11 @@ public class VoteInfo {
 
 	private int voteAttri;
 
-	public String getVoteID() {
+	public int getVoteID() {
 		return voteID;
 	}
 
-	public void setVoteID(String voteID) {
+	public void setVoteID(int voteID) {
 		this.voteID = voteID;
 	}
 
