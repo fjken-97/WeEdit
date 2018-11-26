@@ -10,6 +10,8 @@
 <input class="info-input1"  bindinput="handleMessageChange" placeholder="选项1"/>
 <input class="info-input1"  bindinput="handleMessageChange" placeholder="选项2"/>
 <input class="info-input1"  bindinput="handleMessageChange" placeholder="添加选项"/>
+<view>{{newField.text}}</view>
+<button bindtap="addNewField"> 添加一个新对象 </button>
  </view>
  
 <input class="info-input1"  bindinput="handleMessageChange" placeholder="最多支持15个选项"/>

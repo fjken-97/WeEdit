@@ -22,7 +22,7 @@
      <view>发布通知</view></view>
 
   <view class="nav-item">
-   <navigator  style='display:inline;' url="/pages/Edit/Edit">
+   <navigator  style='display:inline;' url="/pages/Vote/Vote">
      <view><image src="/image/海报/共享编辑.png" style="width:25px;height:23px;"></image></view>
     </navigator>
      <view>共享编辑</view></view>
@@ -40,7 +40,7 @@
 
 <view class="nav">
  <view class="nav-item">
- <navigator  style='display:inline;' url="/pages/Vote/Vote">
+ <navigator  style='display:inline;' url="/pages/Votes/Votes">
      <view><image src="/image/海报/投票.png" style="width:25px;height:23px;"></image></view>
     </navigator>
      <view>投票</view></view>

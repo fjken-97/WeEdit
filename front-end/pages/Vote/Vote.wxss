@@ -4,7 +4,7 @@ page{background: #f4f4f4;}
 
 .textset{
 
-font-size:35rpx;
+font-size:40rpx;
 }
 
 
@@ -19,11 +19,12 @@ font-size: 28rpx;
 
 
 .checkbox{
-   margin-top:2px;
+  
     display:block;
     margin-left:10px;
     margin-top:5px;
-    font-size:30rpx;
+    font-size:35rpx;
+    
 }
 
 

@@ -4,7 +4,7 @@ page{background: #f4f4f4;}
 
 .ad_popFt{ margin: 20rpx ; margin-top: 50rpx;}
 
-.ad_popArea{ width: 708rpx;  height:400rpx;font-size:30rpx;padding: 20rpx; box-sizing: border-box; -webkit-box-sizing: border-box; line-height: 40rpx; color: #333; background: #fff; }
+.ad_popArea{ width: 708rpx;  height:600rpx;font-size:30rpx;padding: 20rpx; box-sizing: border-box; -webkit-box-sizing: border-box; line-height: 40rpx; color: #333; background: #fff; }
 
 .ad_popCout{ color: #969899; font-size: 24rpx; text-align: right; line-height: 58rpx; padding: 0 20rpx;}
 

@@ -2,14 +2,23 @@
 Page({
 
   data: {
-    address: "2~100个字"
+    address: "2~100个字",
+    times:"00:00",
+    dates:"2018-10-01"
   },
+
+   staticData:{
+
+   },
+
   onShareAppMessage: function () {
     return {
       title: '通知',
       path: '/pages/publish/publish'
     }
   },
+
+
   handleContactChange(e) {
     console.log(e.detail.value)
   },
@@ -22,9 +31,29 @@ Page({
   handleAddressChange(e) {
     this.staticData.address = e.detail.value;
   },
-  handlethingsChange(e) {
+  handlethingsChange:function(e) {
     this.staticData.things = e.detail.value;
   },
+
+
+  bindDateChange:function(e){
+    this.setData({
+
+      dates:e.detail.value
+    })
+    
+  },
+
+
+  bindTimeChange(e) {
+    this.setData({
+
+      times: e.detail.value
+    })
+
+  },
+
+
   handleSubmit() {
     if (this.data.address === "2~100个字" || !this.data.address)
       wx.showToast({
@@ -55,5 +84,10 @@ Page({
       })
     return;
   }
+
+
+
+
+
 })
   

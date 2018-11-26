@@ -4,7 +4,7 @@ page{
 
 .row{
   overflow: hidden;
-  line-height: 50px;
+  line-height: 35px;
   border-bottom: 1px solid #ccc;
   background: #fff;
   color: #0c0c0c;
@@ -12,7 +12,7 @@ page{
 
 .rows{
   overflow: hidden;
-  line-height: 50px;
+  line-height: 35px;
   border-bottom: 1px solid #ccc;
   background: #fff;
   color: #0c0c0c;
@@ -40,9 +40,17 @@ page{
 }
 
 .info-input{
-  height: 50px;
+  height: 35px;
 }
 
 .info{
   color: #777;
 }
+
+
+
+.ad_popHd{height: 76rpx; line-height: 76rpx; font-size: 32rpx;text-align: center; border-bottom: 1px solid #cdd1cd; padding: 0 10rpx;color: #202120;}
+
+.ad_popFt{ margin: 20rpx ; margin-top: 50rpx;}
+
+.ad_popArea{ width: 708rpx;  height:400rpx;font-size:30rpx;padding: 20rpx; box-sizing: border-box; -webkit-box-sizing: border-box; line-height: 40rpx; color: #333; background: #fff; }
