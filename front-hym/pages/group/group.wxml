@@ -1,0 +1,27 @@
+<!--pages/group/group.wxml-->
+<view class="page">我的小组</view>
+<scroll-view class="scroll-y" wx:for="{{group}}">
+  <navigator url="/pages/groupDetail/groupDetail?groupID={{item.groupID}}" hover-class="navigator-hover">
+    <button>
+      ID:{{item.groupID}}-------Name:{{item.groupName}}
+    </button>
+  </navigator>
+</scroll-view> 
+
+
+
+
+
+
+
+
+<!--圆形点击框  -->
+<button class="round-click" bindtap='modalinput'>
+   <navigator >+</navigator >
+</button>
+
+
+<modal hidden="{{hiddenmodalput}}" title="创建小组" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+    <input type='text'placeholder="请输入小组名" bindinput='nameChange' auto-focus/>  
+    <input type='text'placeholder="请输入小组介绍" bindinput='introChange' auto-focus/>  
+</modal> 

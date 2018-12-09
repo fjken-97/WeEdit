@@ -1,0 +1,79 @@
+page{
+  background: #fff;
+}
+
+.container{
+    padding: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+}
+.row{
+   line-height: 50px;
+    align-items: center;
+    text-align: center;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+  color: #777;
+}
+
+.rows{
+     line-height: 80px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 118rem;
+}
+
+
+.submit-button{
+
+  width: 100%;
+  margin: 10px 118px 0 8px;
+  background: #fff;
+  line-height: 38px;
+  border-radius:6px;
+  color: #000;
+}
+
+.title{
+  display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+  background: #fff;
+  color: #777;
+}
+
+.titles{
+  padding-left: 10px;
+  width: 100px;
+  float: left;
+}
+
+.info-input{
+  height: 50px;
+}
+
+.info{
+  color: #777;
+}
+
+.info-inputs{
+  height: 160px;
+    padding: 1rem 0;
+    color:#000;
+}
+
+
+/* pages/operation/operation.wxss */
+.container{
+    padding: 1rem;
+    font-size: 5rem;
+    line-height: 0.5rem;
+}
+.rowsss{
+    display: flex;
+    align-items: center;
+    margin: 2px 2px 0 2px;
+}

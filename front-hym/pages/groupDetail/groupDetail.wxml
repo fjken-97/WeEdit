@@ -1,0 +1,29 @@
+<view class='help'>
+  <view class='help_item'>
+    <view class='title' data-index='1' catchtap='panel'>
+      <button class='title_1'>投票</button>
+    </view>
+      <view class='detail' wx:if="{{showIndex == 1}}">
+        <scroll-view class="scroll-y" wx:for="{{voteList}}">
+          <navigator url='/pages/voteDetail/detail?voteID={{item.voteID}}&&voteAttri={{item.voteAttri}}&&isFaceless={{item.isFaceless}}&&voteTitle={{item.voteTitle}}&&voteContent={{item.voteContent}}'>
+            <button>标题{{item.voteTitle}}---内容{{item.voteContent}}--发起人{{item.userID}}</button>
+          </navigator>
+        </scroll-view>
+      </view>
+  </view>
+</view>
+
+<view class='help'>
+  <view class='help_item'>
+    <view class='title' data-index='2' catchtap='panel'>
+      <button class='title_2'>通知</button>
+    </view>
+      <view class='detail' wx:if="{{showIndex == 2}}">
+        <scroll-view class="scroll-y" wx:for="{{noticeList}}">
+          <navigator url='/pages/noticeDetail/detail?noticeID={{item.noticeID}}&&noticeSponsor={{item.noticeSponsor}}&&noticeTitle={{item.noticeTitle}}&&noticeText={{item.noticeText}}&&deadLine={{item.deadLine}}'>
+            <button>标题{{item.noticeTitle}}---内容{{item.noticeText}}--发起人{{item.noticeSponsor}}</button>
+          </navigator>
+        </scroll-view>
+      </view>
+  </view>
+</view>

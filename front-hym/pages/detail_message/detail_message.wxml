@@ -1,0 +1,30 @@
+<view class=''>
+  
+  <swiper class='movie-swiper' indicator-dots='{{true}}'
+   previous-margin="50rpx" next-margin="50rpx"
+   current='{{currentIndex}}'
+  >
+    <swiper-item class='movie' wx:for="{{weeklyMovieList}}">
+     
+      <view class='container movie-card'
+       bindtap='f1' 
+       data-user-name="blabla"
+       data-movie-id="{{item.id}}"
+      >
+        <image class='movie-image' src='{{item.imagePath}}'></image>
+        <!--text>投票编号：{{item.id}}</text-->
+        <text>投票{{index+1}}：{{item.name}}</text>
+        <text>投票截止时间：{{item.lasttime}}</text>
+        <text>投票状况：{{item.comment}}
+        </text> 
+        <text wx:if="{{item.isHighlyRecommended}}" style="font-size:16px; color:red;">即将过期</text>
+
+        <text catchtap='f0' wx:if='{{index < (weeklyMovieList.length - 1)}}' class='return-button'>Last</text>
+      </view>
+
+
+    </swiper-item>
+  </swiper>
+
+
+</view>

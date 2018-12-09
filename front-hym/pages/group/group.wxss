@@ -1,0 +1,55 @@
+.help {
+  width: 700rpx;
+  margin: 0 auto;
+}
+.help .help_item {
+  margin: 10rpx auto;
+}
+.help .help_item .title {
+  font-size: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #e2e2e2;
+  display: flex;
+}
+.help .help_item .title .title_1 {
+  width: 630rpx;
+  height: 60rpx;
+  padding-left: 20rpx;
+}
+.help .help_item .title .title_2 {
+  width: 50rpx;
+  height: 60rpx;
+  text-align: center;
+}
+.help .help_item .title .title_2 image {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 10rpx auto;
+}
+.help .help_item .detail {
+  margin: 10rpx auto;
+  font-size: 25rpx;
+  line-height: 40rpx;
+  text-indent: 2em;
+}
+
+.round-click{
+    height: 120rpx;
+    width: 120rpx;
+    background-color: #2ad9a5;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 70rpx;
+    right: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+.round-click navigator{
+    font-size: 60rpx;
+    max-width: 200rpx;
+    color: #fff;
+    text-align: center;
+}
