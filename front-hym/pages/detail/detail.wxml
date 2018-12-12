@@ -1,0 +1,11 @@
+<view class='container'>
+
+  <image class='detail-image' src='{{movie.images.small}}'></image>
+
+  <text style='font-weight:bold; font-size: 45rpx; '>投票名称：{{movie.title}}</text>
+  <text>投票说明： {{movie.wish_count}}</text>
+  <text>投票截止时间：{{movie.collect_count}}</text>
+  <text>投票结果：{{movie.rating.average}}</text>
+  <text>投票总人数：{{movie.summary}}</text>
+
+</view>

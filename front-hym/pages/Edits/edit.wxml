@@ -1,0 +1,15 @@
+
+ <view class="row">
+ {{Editname}}
+  </view>
+<view>
+<view class ="title" wx:for="{{arc_list}}" wx:for-item="item" wx:key="index">
+{{item.title}}
+</view>
+</view>
+
+  <view class="rows">
+  <view class="submit-button" bindtap='handleSubmit'>编辑</view>
+    <view class="submit-button" bindtap='handleSubmits'>删除</view>
+</view>
+ 
