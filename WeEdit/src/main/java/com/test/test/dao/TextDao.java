@@ -109,4 +109,11 @@ public interface TextDao {
      * @return
      */
     int updateTextComment(TextComment textComment);
+    /**
+     * 获取id
+     *
+     * @param textTitle
+     * @return
+     */
+//    int getTextId(String textTitle);
 }

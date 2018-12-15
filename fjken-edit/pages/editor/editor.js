@@ -37,22 +37,20 @@ Component({
       value: '#fff',
     },
   },
-
-  datas:{
-    textId: undefined,
-    textTitle: '',
-    addUrl: 'http://127.0.0.1:8080/weedit/addtext',
-    modifyUrl:'http://127.0.0.1:8080/weedit/modifytext'
-  },
-
   /**
    * 组件的初始数据
    */
   data: {
+    textId: undefined,
+    textTitle: '',
     windowHeight: 0,
     nodeList: [],
     textBufferPool: [],
+    addUrl: 'http://127.0.0.1:8080/weedit/addtext',
+    addUrlContent: 'http://127.0.0.1:8080/weedit/addtextcontent',
+    modifyUrl: 'http://127.0.0.1:8080/weedit/modifytext'
   },
+
   staticData: {},
   handlethingsnameChange(e) {
     this.staticData.thingsname = e.detail.value;
@@ -113,6 +111,7 @@ Component({
       }
       const nodeList = this.data.nodeList;
       const textBufferPool = this.data.textBufferPool;
+      const textTitle = this.data.textTitle;
       nodeList.splice(index + 1, 0, node);
       textBufferPool.splice(index + 1, 0, '');
       this.setData({
@@ -184,43 +183,70 @@ Component({
     },
 
     /**
+     * 事件：标题输入
+     */
+    onTitleInput: function(e) {
+      var that = this;
+      this.setData({
+        textTitle: e.detail.value,
+      })
+      if (e.textId == undefined) {
+        return;
+      }
+    },
+
+    /**
      * 事件：提交内容
      */
-    onFinish: function(e) {
-      // wx.showLoading({
-      //   title: '正在保存',
-      // })
+    formSubmit: function(e) {
+      var that = this;
+      var app = getApp();
+      // var formData = e.detail.value;
+      var url = that.data.addUrl;
+      wx.showLoading({
+        title: '正在保存',
+      })
       // this.writeTextToNode();
       // this.handleOutput();
-      var that = this;
-      var formData = e.detail.value; //获取表数据
-      var url = that.datas.addUrl; //默认url
-      if (that.datas.textId != undefined) {
-        formData.textId = that.datas.textId;
-        url = that.datas.modifyUrl;
-      }
       wx.request({
         url: url,
-        datas: JSON.stringify(formData),
+        data: {
+          "textTitle": that.data.textTitle,
+          "textAuthorId": 10086
+        },
         method: 'POST',
         header: {
           'Content-Type': 'application/json'
         },
-        success: function (res) {
-          var result = res.datas.success;
-          var toastText = "操作成功";
-          if (result != true) {
-            toastText = "操作失败！" + res.datas.errMsg;
+        success: function(res) {
+          if (res.data != null) {
+            for (var i = 0; i < that.data.textBufferPool.length; i++) {
+              wx.request({
+                url: that.data.addUrlContent,
+                data: {
+                  "contentAbout": that.data.textBufferPool[i],
+                  "textTitle": that.data.textTitle,
+                  "textId": 10086
+                },
+                method: 'POST',
+                header: {
+                  'Content-Type': 'application/json'
+                },
+                success: function(res) {
+                  console.log(res.data)
+                }
+              })
+            }
           }
-          wx.showToast({
-            title: toastText,
-            icon: '',
-            duration: 3000
-          });
-
-          wx.redirectTo({
-            url: '../list/list',
-          })
+          // var toastText = "操作成功";
+          // if (result != true) {
+          //   toastText = "操作失败！" + res.data.errMsg;
+          // }
+          // wx.showToast({
+          //   title: toastText,
+          //   icon: '',
+          //   duration: 3000
+          // });
         }
       })
     },
@@ -375,138 +401,3 @@ Component({
     },
   }
 })
-
-// pages/editor/editor.js
-// Page({
-
-//   /**
-//    * 页面的初始数据
-//    */
-//   data: {
-//     areaId: undefined,
-//     areaName: '',
-//     priority: '',
-//     addUrl: 'http://127.0.0.1:8080/demo/superadmin/addarea',
-//     modifyUrl: 'http://127.0.0.1:8080/demo/superadmin/modifyarea'
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面加载
-//    */
-//   onLoad: function (options) {
-//     var that = this;
-//     this.setData({
-//       areaId: options.areaId,
-//     });
-//     if (options.areaId == undefined) {
-//       return;
-//     }
-//     wx.request({
-//       url: 'http://127.0.0.1:8080/demo/superadmin/getareabyid',
-//       data: {
-//         "areaId": options.areaId
-//       },
-//       method: 'GET',
-//       success: function (res) {
-//         var area = res.data.area;
-//         if (area == undefined) {
-//           var text = '获取数据失败' + res.data.errMsg;
-//           wx.showToast({
-//             title: text,
-//             icon: '',
-//             duration: 2000
-//           });
-//         } else {
-//           that.setData({
-//             areaName: area.areaName,
-//             priority: area.priority
-//           })
-//         }
-//       }
-//     })
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面初次渲染完成
-//    */
-//   onReady: function () {
-
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面显示
-//    */
-//   onShow: function () {
-
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面隐藏
-//    */
-//   onHide: function () {
-
-//   },
-
-//   /**
-//    * 生命周期函数--监听页面卸载
-//    */
-//   onUnload: function () {
-
-//   },
-
-//   /**
-//    * 页面相关事件处理函数--监听用户下拉动作
-//    */
-//   onPullDownRefresh: function () {
-
-//   },
-
-//   /**
-//    * 页面上拉触底事件的处理函数
-//    */
-//   onReachBottom: function () {
-
-//   },
-
-//   /**
-//    * 用户点击右上角分享
-//    */
-//   onShareAppMessage: function () {
-
-//   },
-
-//   formSubmit: function (e) {
-//     var that = this;
-//     var formData = e.detail.value; //获取表数据
-//     var url = that.data.addUrl; //默认url
-//     if (that.data.areaId != undefined) {
-//       formData.areaID = that.data.areaId;
-//       url = that.data.modifyUrl;
-//     }
-//     wx.request({
-//       url: url,
-//       data: JSON.stringify(formData),
-//       method: 'POST',
-//       header: {
-//         'Content-Type': 'application/json'
-//       },
-//       success: function (res) {
-//         var result = res.data.success;
-//         var toastText = "操作成功";
-//         if (result != true) {
-//           toastText = "操作失败！" + res.data.errMsg;
-//         }
-//         wx.showToast({
-//           title: toastText,
-//           icon: '',
-//           duration: 3000
-//         });
-
-//         wx.redirectTo({
-//           url: '../list/list',
-//         })
-//       }
-//     })
-//   }
-
-// })

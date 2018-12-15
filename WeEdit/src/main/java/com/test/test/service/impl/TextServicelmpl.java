@@ -39,6 +39,7 @@ public class TextServicelmpl implements TextService {
     public boolean addText(Text text) {
         if (text.getTextTitle() != null && !"".equals(text.getTextTitle())) {
             text.setTextDate(new Date());
+            text.setTextUpdateDate(new Date());
             try {
                 int effectedNum = textDao.insertText(text);
                 if (effectedNum > 0) {
@@ -57,18 +58,19 @@ public class TextServicelmpl implements TextService {
     @Override
     public boolean addTextContent(TextContent textContent) {
         if (textContent.getContentAbout()!=null && !"".equals(textContent.getContentAbout())) {
+//            textContent.setTextId(textDao.getTextId(textContent.getTextTitle()));
             try {
                 int effectedNum = textDao.insertTextContent(textContent);
                 if (effectedNum > 0) {
                     return true;
                 } else {
-                    throw new RuntimeException("插入区域信息异常!");
+                    throw new RuntimeException("插入内容信息异常!");
                 }
             } catch (Exception e) {
-                throw new RuntimeException("插入区域信息异常: "+ e.getMessage());
+                throw new RuntimeException("插入内容信息异常: "+ e.getMessage());
             }
         }else {
-            throw new RuntimeException("区域信息不能为空!");
+            throw new RuntimeException("内容信息不能为空!");
         }
     }
 

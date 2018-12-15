@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    list: []
   },
 
   /**
@@ -32,7 +32,7 @@ Page({
       method: 'GET',
       data: {},
       success: function (res) {
-        var list = res.data.areaList;
+        var list = res.data.textList;
         if (list == null) {
           var toastText = '获取数据失败' + res.data.errMsg;
           wx.showToast({
@@ -94,12 +94,12 @@ Page({
     var that = this;
     wx.showModal({
       title: '提示',
-      content: '确定要删除[' + e.target.dataset.textTitle + ']吗？',
+      content: '确定要删除[' + e.target.dataset.areaname + ']吗？',
       success: function (sm) {
         if (sm.confirm) {
           wx.request({
             url: 'http://127.0.0.1:8080/weedit/removetext',
-            data: { 'textId': e.target.dataset.textid },
+            data: { 'textId': e.target.dataset.areaid },
             method: 'GET',
             success: function (res) {
               var result = res.data.success;

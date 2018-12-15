@@ -21,7 +21,7 @@ public class TextController {
     @Autowired
     private TextService textService;
     @RequestMapping(value = "/listtext",method = RequestMethod.GET)
-    private Map<String,Object> listArea(){
+    private Map<String,Object> listText(){
         Map<String, Object> modelMap = new HashMap<String, Object>();
         List<Text> list = textService.queryText();
         modelMap.put("textList", list);
@@ -75,7 +75,7 @@ public class TextController {
         return modelMap;
     }
 
-    @RequestMapping(value = "/addcontent",method = RequestMethod.POST)
+    @RequestMapping(value = "/addtextcontent",method = RequestMethod.POST)
     private Map<String,Object> addTextContent(@RequestBody TextContent textContent){
         Map<String, Object> modelMap = new HashMap<String, Object>();
         modelMap.put("success", textService.addTextContent(textContent));
@@ -124,7 +124,7 @@ public class TextController {
         return modelMap;
     }
 
-    @RequestMapping(value = "/removetext",method = RequestMethod.GET)
+    @RequestMapping(value = "/removecomment",method = RequestMethod.GET)
     private Map<String, Object> removeTextComment(Integer textCommentId) {
         Map<String, Object> modelMap = new HashMap<String, Object>();
         modelMap.put("success", textService.deleteTextComment(textCommentId));

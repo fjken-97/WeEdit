@@ -1,12 +1,14 @@
 package com.test.test.entity;
 
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Text {
 
     private Integer textId;
     private String textTitle;
-    private Date textDate;
+    private String textDate;
     private Date textUpdateDate;
     private int textAuthorId;
 
@@ -34,12 +36,14 @@ public class Text {
         this.textTitle = textTitle;
     }
 
-    public Date getTextDate() {
+    public String getTextDate() {
         return textDate;
     }
 
     public void setTextDate(Date textDate) {
-        this.textDate = textDate;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(textDate);
+        this.textDate = date;
     }
 
     public int getTextAuthorId() {

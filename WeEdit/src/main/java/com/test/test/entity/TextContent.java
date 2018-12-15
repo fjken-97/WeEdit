@@ -4,8 +4,8 @@ public class TextContent {
     private Integer contentId;
     private String contentAbout;
     private String contentLast;
-    private boolean contentType;
     private Integer textId;
+    private String textTitle;
 
     public Integer getContentId() {
         return contentId;
@@ -39,11 +39,11 @@ public class TextContent {
         this.textId = textId;
     }
 
-    public boolean isContentType() {
-        return contentType;
+    public String getTextTitle() {
+        return textTitle;
     }
 
-    public void setContentType(boolean contentType) {
-        this.contentType = contentType;
+    public void setTextTitle(String textTitle) {
+        this.textTitle = textTitle;
     }
 }

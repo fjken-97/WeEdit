@@ -22,34 +22,39 @@
         WHERE
         text_id=#{textId} AND text_comment_id=#{textCommentId}
     </select>
+    <!--<select id="getTextId">-->
+        <!--SELECT textId-->
+        <!--FROM weedit_text-->
+        <!--WHERE-->
+        <!--textTitle=#{textTitle}-->
+    <!--</select>-->
     <insert id="insertText" useGeneratedKeys="true" keyProperty="textId"
             keyColumn="text_id" parameterType="com.test.test.entity.Text">
         INSERT INTO
-        weedit_text(text_title,text_date,
-        text_update_date,text_author_id)
+        weedit_text(textTitle,textDate,
+        textUpdateDate,textAuthorId)
         VALUE
         (#{textTitle},#{textDate},#{textUpdateDate},#{textAuthorId})
     </insert>
     <insert id="insertTextContent" useGeneratedKeys="true" keyProperty="contentId"
             keyColumn="content_id" parameterType="com.test.test.entity.TextContent">
         INSERT INTO
-        weedit_content(content_about,text_id,
-        content_type)
+        weedit_content(contentAbout,contentLast,textId,textTitle)
         VALUE
-        (#{contentAbout},#{textId},#{contentType})
+        (#{contentAbout},#{contentAbout},#{textId},#{textTitle})
     </insert>
     <insert id="insertTextComment" useGeneratedKeys="true" keyProperty="commentId"
             keyColumn="comment_id" parameterType="com.test.test.entity.TextComment">
         INSERT INTO
-        weedit_comment(comment_content,comment_date,
-        comment_editor_id,text_id)
+        weedit_comment(commentContent,commentDate,
+        commentEditorId,textId)
         VALUE
         (#{commentContent},#{commentDate},#{commentEditorId},#{textId})
     </insert>
     <delete id="deleteText" parameterType="com.test.test.entity.Text">
         DELETE FROM
         weedit_text
-        WHERE text_id = #{textId}
+        WHERE textId = #{textId}
     </delete>
     <delete id="deleteTextContent" parameterType="com.test.test.entity.TextContent">
         DELETE FROM
@@ -58,21 +63,22 @@
     </delete>
     <delete id="deleteTextComment" parameterType="com.test.test.entity.TextComment">
         DELETE FROM
+        DELETE FROM
         weedit_comment
         WHERE comment_id = #{commentId}
     </delete>
     <update id="updateText" parameterType="com.test.test.entity.Text">
         UPDATE weedit_text
         <set>
-            <if test="textTitle != null">text_title = #{textTitle}</if>
-            <if test="textUpdateDate != null">,text_update_date = #{textUpdateDate}</if>
+            <if test="textTitle != null">textTitle = #{textTitle}</if>
+            <if test="textUpdateDate != null">,textUpdateDate = #{textUpdateDate}</if>
         </set>
         WHERE text_id = #{textId}
     </update>
     <update id="updateTextContent" parameterType="com.test.test.entity.TextContent">
         UPDATE weedit_content
         <set>
-            <if test="contentAbout != null">content_about = #{contentAbout}</if>
+            <if test="contentAbout != null">contentAbout = #{contentAbout}</if>
         </set>
         WHERE content_id = #{contentId}
     </update>
