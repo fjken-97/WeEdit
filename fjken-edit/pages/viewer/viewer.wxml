@@ -33,20 +33,20 @@
   <scroll-view scroll-y="true">
     <view class="content" wx:for="{{contentList}}">
       <!-- <view wx:for="{{contentList}}"> -->
-        <text class="textcontent">{{item.contentAbout}}
+      <text class="textcontent">{{item.contentAbout}}
             </text>
-        <view class="footer">
-          <view class="operation">
-            <view class="list-container" data-index="{{index}}" bindtap='edit'>
-              <!-- <navigator class='link' url='../operation/operation?areaId={{item.areaID}}'>编辑</navigator> -->
-              <view class='link' data-contentid='{{item.contentId}}' data-index="{{index}}" data-content="{{item.contentAbout}}" bindtap='showModal'>编辑</view>
-            </view>
-            <view class="list-container" data-index="{{index}}" bindtap="sign">
-              <!-- <text class='link' bindtap='deleteText' data-areaid='{{item.textId}}' data-areaname='{{item.areaText}}' data-index='{{index}}'> -->
-              <view class='link'>标注</view>
-            </view>
+      <view class="footer">
+        <view class="operation">
+          <view class="list-container" data-index="{{index}}" bindtap='edit'>
+            <!-- <navigator class='link' url='../operation/operation?areaId={{item.areaID}}'>编辑</navigator> -->
+            <view class='link' data-contentid='{{item.contentId}}' data-index="{{index}}" data-content="{{item.contentAbout}}" bindtap='showModal'>编辑</view>
+          </view>
+          <view class="list-container" data-index="{{index}}" bindtap="sign">
+            <!-- <text class='link' bindtap='deleteText' data-areaid='{{item.textId}}' data-areaname='{{item.areaText}}' data-index='{{index}}'> -->
+            <view class='link'>标注</view>
           </view>
         </view>
+      </view>
       <!-- </view> -->
     </view>
   </scroll-view>
@@ -55,15 +55,14 @@
     <view class="title">
       <text>反馈列表</text>
     </view>
-    <view class="judgement">
-      <text>还有一些可能会毁了你“三观”的内容——很多南沙小国其实不怕中国，他们占着绝大多数南沙岛屿;中国的出生率确实在下降，可是和计划生育无关;白宫的政治也是利益为先，所以根本不会搭理外国人的网络请愿……
+    <view class="judgement" wx:for="{{commentList}}">
+      <text class="textcomment">{{item.commentContent}}
             </text>
-    </view>
-    <view class="footer">
-      <view class="operation">
-        <view class="list-container" data-index="{{index}}" bindtap="commit">
-          <!-- <navigator class='link' url='../operation/operation?areaId={{item.areaID}}'>应用</navigator> -->
-          <navigator class='link'>应用</navigator>
+      <view class="footer">
+        <view class="operation">
+          <view class="list-container" data-index="{{index}}" bindtap="commit">
+            <view class='link' data-textid='{{item.textId}}' data-contentid='{{item.contentId}}' data-content="{{item.commentContent}}" bindtap='applyChange'>应用</view>
+          </view>
         </view>
       </view>
     </view>

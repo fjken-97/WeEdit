@@ -6,15 +6,18 @@ Page({
    */
   data: {
     textId: undefined,
+    contentId: undefined,
     textTitle: '',
     textAuthorId: '',
     textDate: '',
     contentList: [],
+    commentList: [],
     contentAbout: '',
-
+    changeInfo: '',
     animationData: "",
     showModalStatus: false,
-    address: ""
+    address: "",
+    commentId:''
   },
 
   /**
@@ -68,7 +71,25 @@ Page({
               console.log(res.data)
             }
           })
-
+          wx.request({
+            url: 'http://127.0.0.1:8080/weedit/listtextcomment',
+            data: {
+              "textId": options.textId,
+            },
+            method: 'GET',
+            header: {
+              'Content-Type': 'application/json'
+            },
+            success: function(res) {
+              var list = res.data.commentList;
+              if (list != null) {
+                that.setData({
+                  commentList: list
+                })
+              }
+              console.log(res.data)
+            }
+          })
         }
       }
     })
@@ -124,10 +145,11 @@ Page({
   },
 
   showModal: function(e) {
-    var contentId = e.currentTarget.dataset.contentid
-    var contentIndex = e.currentTarget.dataset.index
+    // var contentId = e.currentTarget.dataset.contentid
+    // var contentIndex = e.currentTarget.dataset.index
     this.setData({
-      contentAbout: e.currentTarget.dataset.content
+      contentAbout: e.currentTarget.dataset.content,
+      contentId: e.currentTarget.dataset.contentid
     });
     // 显示遮罩层  
     var animation = wx.createAnimation({
@@ -183,14 +205,48 @@ Page({
   },
 
   click_ok: function() {
-    console.log("点击确定，输入的信息为为==", contentAbout);
+    var that = this;
+    wx.request({
+      url: 'http://127.0.0.1:8080/weedit/addtextcomment',
+      data: {
+        "commentContent": that.data.changeInfo,
+        "textId": that.data.textId,
+        "contentId": that.data.contentId,
+        "commentEditorId": 10086
+      },
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function(res) {
+        console.log(res.data)
+      }
+    })
     this.hideModal();
+    this.onLoad();
   },
   input_content: function(e) {
-    console.log(e);
-    var inputinfo = e.detail.value;
     this.setData({
-      contentAbout: inputinfo
+      changeInfo: e.detail.value
     });
+    var that = this;
+  },
+  applyChange:function(e){
+    var that = this;
+    wx.request({
+      url: 'http://127.0.0.1:8080/weedit/modifycontent',
+      data: {
+        "contentId": e.currentTarget.dataset.contentid,
+        "contentAbout": e.currentTarget.dataset.content,
+        "textId": e.currentTarget.dataset.textid
+      },
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
   }
 })
