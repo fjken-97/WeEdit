@@ -29,9 +29,9 @@ public class TextController {
     }
 
     @RequestMapping(value = "/listtextcontent",method = RequestMethod.GET)
-    private Map<String,Object> listTextContent(){
+    private Map<String,Object> listTextContent(Integer textId){
         Map<String, Object> modelMap = new HashMap<String, Object>();
-        List<TextContent> list = textService.queryTextContent();
+        List<TextContent> list = textService.queryTextContent(textId);
         modelMap.put("contentList", list);
         return modelMap;
     }
@@ -44,18 +44,18 @@ public class TextController {
         return modelMap;
     }
 
-    @RequestMapping(value = "/gettextbyid",method = RequestMethod.GET)
-    private Map<String,Object> getTextById(Integer textId){
+    @RequestMapping(value = "/gettextheadbyid",method = RequestMethod.GET)
+    private Map<String,Object> getTextHeadById(Integer textId){
         Map<String, Object> modelMap = new HashMap<String, Object>();
-        Text text = textService.getTextById(textId);
+        Text text = textService.getTextHeadById(textId);
         modelMap.put("text", text);
         return modelMap;
     }
 
-    @RequestMapping(value = "/getcontentbyid",method = RequestMethod.GET)
-    private Map<String,Object> getTextContentById(Integer contentId){
+    @RequestMapping(value = "/gettextcontentbyid",method = RequestMethod.GET)
+    private Map<String,Object> getTextContentById(Integer textId){
         Map<String, Object> modelMap = new HashMap<String, Object>();
-        TextContent textContent = textService.getTextContentById(contentId);
+        TextContent textContent = textService.getTextContentById(textId);
         modelMap.put("textContent", textContent);
         return modelMap;
     }

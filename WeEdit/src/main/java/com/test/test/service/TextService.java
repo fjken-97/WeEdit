@@ -19,7 +19,7 @@ public interface TextService {
      *
      * @return
      */
-    List<TextContent> queryTextContent();
+    List<TextContent> queryTextContent(Integer textId);
     /**
      * 获取文章评论列表
      *
@@ -33,21 +33,21 @@ public interface TextService {
      * @param text
      * @return
      */
-    boolean addText(Text text);
+    int addText(Text text);
     /**
      * 增加文章信息
      *
      * @param textContent
      * @return
      */
-    boolean addTextContent(TextContent textContent);
+    int addTextContent(TextContent textContent);
     /**
      * 增加文章信息
      *
      * @param textComment
      * @return
      */
-    boolean addTextComment(TextComment textComment);
+    int addTextComment(TextComment textComment);
 //***********************************获取部分***********************************
     /**
      * 通过文章Id获取文章信息
@@ -55,21 +55,28 @@ public interface TextService {
      * @param textId
      * @return
      */
-    Text getTextById(int textId);
+    Text getTextById(Integer textId);
+    /**
+     * 通过文章Id获取题头信息
+     *
+     * @param textId
+     * @return
+     */
+    Text getTextHeadById(Integer textId);
     /**
      * 通过文章段落Id获取段落信息
      *
-     * @param textContentId
+     * @param textId
      * @return
      */
-    TextContent getTextContentById(int textContentId);
+    TextContent getTextContentById(Integer textId);
     /**
      * 通过文章评论Id获取评论信息
      *
      * @param textCommentId
      * @return
      */
-    TextComment getTextCommentById(int textCommentId);
+    TextComment getTextCommentById(Integer textCommentId);
 //***********************************删除部分***********************************
     /**
      * 删除文章信息

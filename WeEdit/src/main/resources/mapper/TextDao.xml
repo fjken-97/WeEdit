@@ -9,12 +9,17 @@
         ORDER BY textDate
         DESC
     </select>
-
-    <select id="queryTextContentById" resultType="com.test.test.entity.TextContent">
+    <select id="queryTextHeadById" resultType="com.test.test.entity.Text">
+        SELECT *
+        FROM  weedit_text
+        WHERE
+        textId=#{textId}
+    </select>
+    <select id="queryTextContent" resultType="com.test.test.entity.TextContent">
         SELECT *
         FROM  weedit_content
         WHERE
-        text_id=#{textId} AND text_content_id=#{textContentId}
+        textId=#{textId}
     </select>
     <select id="queryTextCommentById" resultType="com.test.test.entity.TextComment">
         SELECT *
@@ -35,21 +40,23 @@
         textUpdateDate,textAuthorId)
         VALUE
         (#{textTitle},#{textDate},#{textUpdateDate},#{textAuthorId})
+        <selectKey resultType="int" keyProperty="textId">
+            SELECT LAST_INSERT_ID() AS textId
+        </selectKey>
     </insert>
     <insert id="insertTextContent" useGeneratedKeys="true" keyProperty="contentId"
             keyColumn="content_id" parameterType="com.test.test.entity.TextContent">
         INSERT INTO
-        weedit_content(contentAbout,contentLast,textId,textTitle)
+        weedit_content(commentContent,commentDate,commentEditorId,textId,contentId)
         VALUE
         (#{contentAbout},#{contentAbout},#{textId},#{textTitle})
     </insert>
     <insert id="insertTextComment" useGeneratedKeys="true" keyProperty="commentId"
             keyColumn="comment_id" parameterType="com.test.test.entity.TextComment">
         INSERT INTO
-        weedit_comment(commentContent,commentDate,
-        commentEditorId,textId)
+        weedit_comment(commentContent,commentDate,commentEditorId,textId,contentId)
         VALUE
-        (#{commentContent},#{commentDate},#{commentEditorId},#{textId})
+        (#{commentContent},#{commentDate},#{commentEditorId},#{textId},#{commentId})
     </insert>
     <delete id="deleteText" parameterType="com.test.test.entity.Text">
         DELETE FROM

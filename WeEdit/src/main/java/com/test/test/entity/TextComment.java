@@ -8,6 +8,7 @@ public class TextComment {
     private Date commentDate;
     private String commentEditorId;
     private Integer textId;
+    private Integer contentId;
 
     public Integer getCommentId() {
         return commentId;
@@ -47,5 +48,13 @@ public class TextComment {
 
     public void setTextId(int textId) {
         this.textId = textId;
+    }
+
+    public Integer getContentId() {
+        return contentId;
+    }
+
+    public void setContentId(Integer contentId) {
+        this.contentId = contentId;
     }
 }

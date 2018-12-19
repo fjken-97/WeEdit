@@ -10,15 +10,22 @@ public interface TextDao {
     /**
      * 列出文章信息
      *
-     * @return areaList
+     * @return textList
      */
     List<Text> queryText();
+    /**
+     * 列出文章题头信息
+     *
+     * @return areaList
+     */
+    List<Text> queryTextHead();
     /**
      * 列出段落信息
      *
      * @return areaList
+     * @param textId
      */
-    List<TextContent> queryTextContent();
+    List<TextContent> queryTextContent(Integer textId);
     /**
      * 列出评论信息
      *
@@ -32,6 +39,13 @@ public interface TextDao {
      * @return  area
      */
     Text queryTextById(int textId);
+    /**
+     * 根据Id列出具体文章题头
+     *
+     * @param textId
+     * @return  area
+     */
+    Text queryTextHeadById(Integer textId);
     /**
      * 根据Id列出该篇文章段落
      *
@@ -109,6 +123,7 @@ public interface TextDao {
      * @return
      */
     int updateTextComment(TextComment textComment);
+
     /**
      * 获取id
      *

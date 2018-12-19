@@ -24,8 +24,8 @@ public class TextServicelmpl implements TextService {
     }
 
     @Override
-    public List<TextContent> queryTextContent() {
-        return textDao.queryTextContent();
+    public List<TextContent> queryTextContent(Integer textId) {
+        return textDao.queryTextContent(textId);
     }
 
     @Override
@@ -36,14 +36,14 @@ public class TextServicelmpl implements TextService {
     //************************************添加操作的具体事务************************************
     @Transactional
     @Override
-    public boolean addText(Text text) {
+    public int addText(Text text) {
         if (text.getTextTitle() != null && !"".equals(text.getTextTitle())) {
             text.setTextDate(new Date());
             text.setTextUpdateDate(new Date());
             try {
                 int effectedNum = textDao.insertText(text);
                 if (effectedNum > 0) {
-                    return true;
+                    return text.getTextId();
                 } else {
                     throw new RuntimeException("插入信息异常!");
                 }
@@ -56,13 +56,13 @@ public class TextServicelmpl implements TextService {
     }
 
     @Override
-    public boolean addTextContent(TextContent textContent) {
+    public int addTextContent(TextContent textContent) {
         if (textContent.getContentAbout()!=null && !"".equals(textContent.getContentAbout())) {
 //            textContent.setTextId(textDao.getTextId(textContent.getTextTitle()));
             try {
                 int effectedNum = textDao.insertTextContent(textContent);
                 if (effectedNum > 0) {
-                    return true;
+                    return textContent.getContentId();
                 } else {
                     throw new RuntimeException("插入内容信息异常!");
                 }
@@ -75,13 +75,13 @@ public class TextServicelmpl implements TextService {
     }
 
     @Override
-    public boolean addTextComment(TextComment textComment) {
+    public int addTextComment(TextComment textComment) {
         if (textComment.getCommentContent()!=null && !"".equals(textComment.getCommentContent())) {
             textComment.setCommentDate(new Date());
             try {
                 int effectedNum = textDao.insertTextComment(textComment);
                 if (effectedNum > 0) {
-                    return true;
+                    return textComment.getCommentId();
                 } else {
                     throw new RuntimeException("插入区域信息异常!");
                 }
@@ -94,17 +94,22 @@ public class TextServicelmpl implements TextService {
     }
     //************************************获取的具体事务************************************
     @Override
-    public Text getTextById(int textId) {
+    public Text getTextById(Integer textId) {
         return textDao.queryTextById(textId);
     }
 
     @Override
-    public TextContent getTextContentById(int textContentId) {
-        return textDao.queryTextContentById(textContentId);
+    public Text getTextHeadById(Integer textId) {
+        return textDao.queryTextHeadById(textId);
     }
 
     @Override
-    public TextComment getTextCommentById(int textCommentId) {
+    public TextContent getTextContentById(Integer textId) {
+        return textDao.queryTextContentById(textId);
+    }
+
+    @Override
+    public TextComment getTextCommentById(Integer textCommentId) {
         return textDao.queryTextCommentById(textCommentId);
     }
 
