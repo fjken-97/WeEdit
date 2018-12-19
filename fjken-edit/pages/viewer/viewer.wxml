@@ -1,33 +1,55 @@
 <!--pages/viewer/viewer.wxml-->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <!--对话框标题-->
+  <view class="dialog-title">段落文本修改</view>
+  <view class="line-top"></view>
+  <!--对话框输入部分-->
+  <view class="input-view">
+    <view class="input01"></view>
+    <textarea class="input-style" type="text" placeholder="请输入你的想法" bindblur="input_content" value="{{contentAbout}}" />
+    <!-- <input type="text" bindblur="input_content" class="input-style"/>  -->
+  </view>
+  <!--对话框按钮-->
+  <view class="line-top"></view>
+  <view class="btn-view">
+    <view class="btn-cancel" bindtap="click_cancel">取 消</view>
+    <view class="btn-line"></view>
+    <view class="btn-cancel" bindtap="click_ok">确 定</view>
+  </view>
+</view>
+
 <view class="container">
   <view class="article">
     <view class="title">
-      <text>知天下，为什么美国数学很简，做的东西却比我们好？</text>
+      <text class="textTitle">{{textTitle}}</text>
     </view>
     <view class="author-info">
-      <text class="author-name">Dave Cheng</text>
-      <text class="author-mark">，矮油</text>
+      <text class="author-name">Author : {{textAuthorId}}</text>
+      <text class="author-mark">，CreateTime : {{textDate}}</text>
     </view>
   </view>
-
-  <view class="content">
-    <text>还有一些可能会毁了你“三观”的内容——很多南沙小国其实不怕中国，他们占着绝大多数南沙岛屿;中国的出生率确实在下降，可是和计划生育无关;白宫的政治也是利益为先，所以根本不会搭理外国人的网络请愿……
+  <scroll-view scroll-y="true">
+    <view class="content" wx:for="{{contentList}}">
+      <!-- <view wx:for="{{contentList}}"> -->
+        <text class="textcontent">{{item.contentAbout}}
             </text>
-    <view class="footer">
-      <view class="operation">
-        <view class="list-container" data-index="{{index}}" bindtap="edit">
-          <!-- <navigator class='link' url='../operation/operation?areaId={{item.areaID}}'>编辑</navigator> -->
-          <navigator class='link'>编辑</navigator>
+        <view class="footer">
+          <view class="operation">
+            <view class="list-container" data-index="{{index}}" bindtap='edit'>
+              <!-- <navigator class='link' url='../operation/operation?areaId={{item.areaID}}'>编辑</navigator> -->
+              <view class='link' data-contentid='{{item.contentId}}' data-index="{{index}}" data-content="{{item.contentAbout}}" bindtap='showModal'>编辑</view>
+            </view>
+            <view class="list-container" data-index="{{index}}" bindtap="sign">
+              <!-- <text class='link' bindtap='deleteText' data-areaid='{{item.textId}}' data-areaname='{{item.areaText}}' data-index='{{index}}'> -->
+              <view class='link'>标注</view>
+            </view>
+          </view>
         </view>
-        <view class="list-container" data-index="{{index}}" bindtap="sign">
-          <!-- <text class='link' bindtap='deleteText' data-areaid='{{item.textId}}' data-areaname='{{item.areaText}}' data-index='{{index}}'> -->
-          <navigator class='link'>标注</navigator>
-        </view>
-      </view>
+      <!-- </view> -->
     </view>
-  </view>
-
-  
+  </scroll-view>
 
   <view class="comment">
     <view class="title">

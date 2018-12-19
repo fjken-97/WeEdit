@@ -226,7 +226,7 @@ Component({
                 data: {
                   "contentAbout": that.data.textBufferPool[i],
                   "textTitle": that.data.textTitle,
-                  "textId": 10086
+                  "textId": res.data.success
                 },
                 method: 'POST',
                 header: {
@@ -238,6 +238,9 @@ Component({
               })
             }
           }
+          wx.redirectTo({
+            url: '../list/list',
+          })
           // var toastText = "操作成功";
           // if (result != true) {
           //   toastText = "操作失败！" + res.data.errMsg;
