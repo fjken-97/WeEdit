@@ -29,8 +29,8 @@ public class TextServicelmpl implements TextService {
     }
 
     @Override
-    public List<TextComment> queryTextComment() {
-        return textDao.queryTextComment();
+    public List<TextComment> queryTextComment(Integer textId) {
+        return textDao.queryTextComment(textId);
     }
 
     //************************************添加操作的具体事务************************************

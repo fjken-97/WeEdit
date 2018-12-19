@@ -37,9 +37,9 @@ public class TextController {
     }
 
     @RequestMapping(value = "/listtextcomment",method = RequestMethod.GET)
-    private Map<String,Object> listTextComment(){
+    private Map<String,Object> listTextComment(Integer textId){
         Map<String, Object> modelMap = new HashMap<String, Object>();
-        List<TextComment> list = textService.queryTextComment();
+        List<TextComment> list = textService.queryTextComment(textId);
         modelMap.put("commentList", list);
         return modelMap;
     }
@@ -82,7 +82,7 @@ public class TextController {
         return modelMap;
     }
 
-    @RequestMapping(value = "/addcomment",method = RequestMethod.POST)
+    @RequestMapping(value = "/addtextcomment",method = RequestMethod.POST)
     private Map<String,Object> addTextComment(@RequestBody TextComment textComment){
         Map<String, Object> modelMap = new HashMap<String, Object>();
         modelMap.put("success", textService.addTextComment(textComment));

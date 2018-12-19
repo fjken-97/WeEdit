@@ -31,7 +31,7 @@ public interface TextDao {
      *
      * @return areaList
      */
-    List<TextComment> queryTextComment();
+    List<TextComment> queryTextComment(Integer textId);
     /**
      * 根据Id列出具体文章
      *

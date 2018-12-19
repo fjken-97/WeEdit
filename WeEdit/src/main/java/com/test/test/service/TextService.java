@@ -25,7 +25,7 @@ public interface TextService {
      *
      * @return
      */
-    List<TextComment> queryTextComment();
+    List<TextComment> queryTextComment(Integer textId);
 //***********************************插入部分***********************************
     /**
      * 增加文章信息
