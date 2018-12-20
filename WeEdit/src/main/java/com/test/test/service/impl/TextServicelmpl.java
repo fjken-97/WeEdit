@@ -212,24 +212,4 @@ public class TextServicelmpl implements TextService {
         }
     }
 
-    @Transactional
-    @Override
-    public boolean modifyTextComment(TextComment textComment) {
-        if(textComment.getCommentId()!= null && textComment.getCommentId()>0)
-        {
-            textComment.setCommentDate(new Date());
-            try {
-                int effectedNum = textDao.updateTextComment(textComment);
-                if (effectedNum > 0) {
-                    return true;
-                } else {
-                    throw new RuntimeException("更新评价信息异常!");
-                }
-            } catch (Exception e) {
-                throw new RuntimeException("更新评价信息异常: " + e.getMessage());
-            }
-        }else{
-            throw new RuntimeException("评价信息不能为空!");
-        }
-    }
 }

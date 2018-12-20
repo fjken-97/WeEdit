@@ -103,13 +103,6 @@ public class TextController {
         return modelMap;
     }
 
-    @RequestMapping(value = "/modifycomment",method = RequestMethod.POST)
-    private Map<String, Object> modifyText(@RequestBody TextComment textComment) {
-        Map<String, Object> modelMap = new HashMap<String, Object>();
-        modelMap.put("success", textService.modifyTextComment(textComment));
-        return modelMap;
-    }
-
     @RequestMapping(value = "/removetext",method = RequestMethod.GET)
     private Map<String, Object> removeText(Integer textId) {
         Map<String, Object> modelMap = new HashMap<String, Object>();

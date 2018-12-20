@@ -116,13 +116,6 @@ public interface TextDao {
      * @return
      */
     int updateTextContent(TextContent textContent);
-    /**
-     * 更新评论信息
-     *
-     * @param textComment
-     * @return
-     */
-    int updateTextComment(TextComment textComment);
 
     /**
      * 获取id

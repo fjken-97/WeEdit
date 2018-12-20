@@ -1,6 +1,6 @@
 /* pages/list/list.wxss */
 page {
-    background: #F6F6F6;
+    background: #F2F6FC;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -64,6 +64,9 @@ page {
 	margin-bottom: 20rpx;
 	background: #fff;
 	padding: 20rpx;
+  border-radius:0.2rem;
+  width:95%;
+
 }
 
 /* item列表的第一行 */

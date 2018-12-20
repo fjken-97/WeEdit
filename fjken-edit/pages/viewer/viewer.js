@@ -223,16 +223,31 @@ Page({
       }
     })
     this.hideModal();
-    this.onLoad();
   },
   input_content: function(e) {
     this.setData({
       changeInfo: e.detail.value
     });
-    var that = this;
   },
   applyChange:function(e){
     var that = this;
+    wx.request({
+      url: 'http://127.0.0.1:8080/weedit/modifycontent',
+      data: {
+        "contentId": e.currentTarget.dataset.contentid,
+        "contentAbout": e.currentTarget.dataset.content,
+        "textId": e.currentTarget.dataset.textid
+      },
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
+  },
+  contentback:function(e){
     wx.request({
       url: 'http://127.0.0.1:8080/weedit/modifycontent',
       data: {

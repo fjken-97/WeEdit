@@ -8,7 +8,7 @@
   <!--对话框输入部分-->
   <view class="input-view">
     <view class="input01"></view>
-    <textarea class="input-style" type="text" placeholder="请输入你的想法" bindblur="input_content" value="{{contentAbout}}" />
+    <textarea class="input-style" type="text" placeholder="请输入你的想法" bindinput="input_content" value="{{contentAbout}}" />
     <!-- <input type="text" bindblur="input_content" class="input-style"/>  -->
   </view>
   <!--对话框按钮-->
@@ -43,7 +43,7 @@
           </view>
           <view class="list-container" data-index="{{index}}" bindtap="sign">
             <!-- <text class='link' bindtap='deleteText' data-areaid='{{item.textId}}' data-areaname='{{item.areaText}}' data-index='{{index}}'> -->
-            <view class='link'>标注</view>
+            <view class='link' data-textid='{{item.textId}}' data-contentid='{{item.contentId}}' data-content="{{item.contentLast}}" bindtap='contentback'>回退</view>
           </view>
         </view>
       </view>

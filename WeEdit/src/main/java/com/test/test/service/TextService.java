@@ -114,12 +114,5 @@ public interface TextService {
      * @return
      */
     boolean modifyTextContent(TextContent textContent);
-    /**
-     * 修改文章评论信息
-     *
-     * @param textComment
-     * @return
-     */
-    boolean modifyTextComment(TextComment textComment);
 
 }
