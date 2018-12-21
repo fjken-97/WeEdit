@@ -1,0 +1,221 @@
+<!--主盒子-->
+
+<view class="container">
+
+  <!-- 左侧栏 -->
+  <view class='nav_left' style="position:fixed">
+
+    <view class="nav_left_items {{curNav == 1 ? 'active' : ''}}" bindtap="switchRightTab" data-id="1">
+      投票
+    </view>
+
+    <view class="nav_left_items {{curNav == 2 ? 'active' : ''}}" bindtap="switchRightTab" data-id="2">
+      签到
+    </view>
+
+    <view class="nav_left_items {{curNav == 3 ? 'active' : ''}}" bindtap="switchRightTab" data-id="3">
+      通知
+    </view>
+
+    <view class="nav_left_items {{curNav == 4 ? 'active' : ''}}" bindtap="switchRightTab" data-id="4">
+      小组成员
+    </view>
+
+    <view class="nav_left_items {{curNav == 5 ? 'active' : ''}}" bindtap="switchRightTab" data-id="5">
+      小组管理
+    </view>
+  </view>
+
+  <!-- 右侧栏 -->
+  <view class="nav_right">
+    <view wx:if="{{curNav==1}}">
+      <view>
+        <view wx:for="{{voteList}}">
+          <navigator url='/pages/voteDetail/detail?voteID={{item.voteID}}&&voteAttri={{item.voteAttri}}&&isFaceless={{item.isFaceless}}&&voteTitle={{item.voteTitle}}&&voteContent={{item.voteContent}}&&avatarUrl={{item.avatarUrl}}&&type=0'>
+            <button class="weui-btn" type="default" plain="true">
+
+
+
+              <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+
+                  <image class="weui-media-box__thumb" src="{{item.avatarUrl}}" style="width:70px;height:70px;" />
+                </view>
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">{{item.voteTitle}}</view>
+                  <view class="weui-media-box__desc"> {{item.nickName}}</view>
+
+                </view>
+              </view>
+
+              <view class="sty">
+                <view wx:if="{{item.flag==0}}">已完成</view>
+                <view wx:if="{{item.flag==1}}">已过期</view>
+                <view wx:if="{{item.flag==2}}">进行中</view>
+              </view>
+
+
+            </button>
+          </navigator>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{curNav==2}}">
+      <view>
+        <view>
+          <scroll-view class="scroll-y" wx:for="{{signList}}">
+            <navigator url='/pages/signIn/signIn?signTitle={{item.signTitle}}&&signIntro={{item.signIntro}}&&signStart={{item.signStart}}&&signFinish={{item.signFinish}}&&signDate={{item.signDate}}&&signDistance={{item.signDistance}}&&createTime={{item.createTime}}&&signLongitude={{item.signLongitude}}&&signLatitude={{item.signLatitude}}&&userID={{item.userID}}&&signPlace={{item.signPlace}}&&SSID={{item.ssid}}&&BSSID={{item.bssid}}&&isWifi={{item.isWifi}}&&isLocation={{item.isLocation}}&&signID={{item.signID}}&&nickName={{item.nickName}}&&avatarUrl={{item.avatarUrl}}&&type=0'>
+              <button class='but' class="weui-btn" type="default" plain="true">
+
+                <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+
+                  <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+
+                    <image class="weui-media-box__thumb" src="{{item.avatarUrl}}" style="width:70px;height:70px;" />
+                  </view>
+                  <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                    <view class="weui-media-box__title"> {{item.signTitle}}</view>
+                    <view class="weui-media-box__desc"> {{item.nickName}}</view>
+
+                  </view>
+                </view>
+
+                <view class="sty">
+                  <view wx:if="{{item.flag==0}}">已完成</view>
+                  <view wx:if="{{item.flag==1}}">已过期</view>
+                  <view wx:if="{{item.flag==2}}">进行中</view>
+                  <view wx:if="{{item.flag==3}}">未开始</view>
+                </view>
+
+              </button>
+            </navigator>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{curNav==3}}">
+      <scroll-view class="scroll-y" wx:for="{{noticeList}}">
+        <navigator url='/pages/noticeDetail/detail?noticeID={{item.noticeID}}&&noticeSponsor={{item.noticeSponsor}}&&noticeTitle={{item.noticeTitle}}&&noticeText={{item.noticeText}}&&deadLine={{item.deadLine}}&&nickName={{item.nickName}}&&avatarUrl={{item.avatarUrl}}&&type=0'>
+          <button class='but' class="weui-btn" type="default" plain="true">
+            <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+
+              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+
+                <image class="weui-media-box__thumb" src="{{item.avatarUrl}}" style="width:70px;height:70px;" />
+              </view>
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                <view class="weui-media-box__title"> {{item.noticeTitle}}</view>
+                <view class="weui-media-box__desc"> {{item.nickName}}</view>
+
+              </view>
+            </view>
+
+
+
+            <view class="sty">
+              <view wx:if="{{item.flag==0}}">已完成</view>
+              <view wx:if="{{item.flag==1}}">已过期</view>
+              <view wx:if="{{item.flag==2}}">进行中</view>
+            </view>
+
+          </button>
+        </navigator>
+      </scroll-view>
+    </view>
+
+    <view wx:if="{{curNav==4}}">
+      <scroll-view class="scroll-y" wx:for="{{memberList}}">
+        
+          <button class='but' class="weui-btn" type="default" plain="true" bindtap='modalinput5' id="{{item.userID}}">
+            <view class='name'>
+              <image src="/image/common/green.png" style="width:5px;height:5px;" /> {{item.nickName}}
+            </view>
+            <view>
+              <view class='nei'>
+              </view>
+            </view>
+            <view>
+              <view class='id'>
+              </view>
+            </view>
+          </button>
+  
+      </scroll-view>
+    </view>
+
+    <view wx:if="{{curNav==5}}">
+
+
+
+      <view bindtap='modalinput' class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; vertical-align: middle">修改组名</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+
+
+        <view bindtap='modalinput1' class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd">
+            <view style="display: inline-block; vertical-align: middle">修改介绍</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+
+
+
+        <view bindtap='modalinput2' class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd">
+            <view style="display: inline-block; vertical-align: middle">修改密钥</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+
+
+        <view wx:if="{{userID1==userID2}}" bindtap='modalinput3' class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd">
+            <view style="display: inline-block; vertical-align: middle">解散小组</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+
+        <view wx:if="{{userID1!=userID2}}" bindtap='modalinput4' class="weui-cell weui-cell_access">
+          <view class="weui-cell__bd">
+            <view style="display: inline-block; vertical-align: middle">退出小组</view>
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<modal hidden="{{hiddenmodalput}}" title="修改组名" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+  <input type='text' placeholder="请输入小组名" bindinput='contentChange' />
+</modal>
+<modal hidden="{{hiddenmodalput1}}" title="修改介绍" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+  <input type='text' placeholder="请输入小组介绍" bindinput='contentChange' />
+</modal>
+<modal hidden="{{hiddenmodalput2}}" title="修改密钥" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+  <input type='text' placeholder="请输入小组密钥" bindinput='contentChange' />
+</modal>
+<modal hidden="{{hiddenmodalput3}}" title="解散小组" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm3">
+  你确定要解散该小组吗？
+</modal>
+<modal hidden="{{hiddenmodalput4}}" title="退出小组" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm4">
+  你确定要退出该小组吗？
+</modal>
+<modal hidden="{{hiddenmodalput5}}" title="用户资料" confirm-text="删除" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm5">
+ <image src="{{tempavatarUrl}}"></image>
+ <view>{{tempNickName}}</view>
+ <view>{{tempSelfIntro}}</view>
+</modal>
+
+<modal hidden="{{hiddenmodalput6}}" title="移除用户" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm6">
+  你确定要移除改用户吗？
+</modal>

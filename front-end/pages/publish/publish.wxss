@@ -1,8 +1,16 @@
-page{
+page {
   background: #eee;
 }
 
-.row{
+.row {
+  overflow: hidden;
+  line-height: 45px;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+  color: #0c0c0c;
+}
+
+.rows {
   overflow: hidden;
   line-height: 35px;
   border-bottom: 1px solid #ccc;
@@ -10,47 +18,67 @@ page{
   color: #0c0c0c;
 }
 
-.rows{
-  overflow: hidden;
-  line-height: 35px;
-  border-bottom: 1px solid #ccc;
-  background: #fff;
-  color: #0c0c0c;
-}
-
-.submit-button{
+.submit-button {
   margin: 10px 8px 0 8px;
   background: #09bb07;
-  line-height: 38px;
-  border-radius: :6px;
+  line-height: 42px;
+  border-radius: 6px;
   text-align: center;
   color: #fff;
 }
 
-.title{
+.title {
+  padding-left: 15px;
+  width: 100px;
+  float: left;
+  font-size: 16px;
+}
+
+.titles {
   padding-left: 10px;
   width: 100px;
   float: left;
+  font-size: 16px;
 }
 
-.titles{
-  padding-left: 10px;
-  width: 100px;
-  float: left;
-}
-
-.info-input{
+.info-input {
   height: 35px;
+  font-size: 16px;
 }
 
-.info{
+.info {
   color: #777;
+  font-size: 16px;
 }
 
+.ad_popHd {
+  height: 76rpx;
+  line-height: 76rpx;
+  font-size: 32rpx;
+  text-align: center;
+  border-bottom: 1px solid #cdd1cd;
+  padding: 0 10rpx;
+  color: #202120;
+}
 
+.ad_popFt {
+  margin: 20rpx;
+  margin-top: 50rpx;
+}
 
-.ad_popHd{height: 76rpx; line-height: 76rpx; font-size: 32rpx;text-align: center; border-bottom: 1px solid #cdd1cd; padding: 0 10rpx;color: #202120;}
+.ad_popArea {
 
-.ad_popFt{ margin: 20rpx ; margin-top: 50rpx;}
+line-height:1.5em;
+letter-spacing:1px;
+width:100%;
+height:300px;
+font-size:35rpx;
+padding:20rpx;
+box-sizing:border-box;
+-webkit-box-sizing:border-box;
+color:#333;
+background:#fff;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 20rpx;
+}
 
-.ad_popArea{ width: 708rpx;  height:400rpx;font-size:30rpx;padding: 20rpx; box-sizing: border-box; -webkit-box-sizing: border-box; line-height: 40rpx; color: #333; background: #fff; }

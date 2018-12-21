@@ -1,0 +1,10 @@
+    <view wx:if="{{}}">
+    <view>-----已参与-------</view>
+    <scroll-view class='scroll-y'wx:for="{{UserInfoBySignIDedList}}">
+    {{item.nickName}}
+    </scroll-view>
+    <view>-----未参与-------</view>
+    <scroll-view class='scroll-y'wx:for="{{UserInfoBySignIDingList}}">
+    {{item.nickName}}
+    </scroll-view>
+    </view>

@@ -1,0 +1,126 @@
+
+
+.help {
+  width: 700rpx;
+  margin: 0 auto;
+}
+.help .help_item {
+  margin: 10rpx auto;
+}
+.help .help_item .title {
+  font-size: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #e2e2e2;
+  display: flex;
+}
+.help .help_item .title .title_1 {
+  width: 630rpx;
+  height: 60rpx;
+  padding-left: 20rpx;
+}
+.help .help_item .title .title_2 {
+  width: 50rpx;
+  height: 60rpx;
+  text-align: center;
+}
+.help .help_item .title .title_2 image {
+  width: 40rpx;
+  height: 40rpx;
+  margin: 10rpx auto;
+}
+.help .help_item .detail {
+  margin: 10rpx auto;
+  font-size: 25rpx;
+  line-height: 40rpx;
+  text-indent: 2em;
+}
+
+.round-click{
+    height: 120rpx;
+    width: 120rpx;
+    background-color: #e9ec15;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 40rpx;
+    right: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+.round-click1{
+    height: 120rpx;
+    width: 120rpx;
+    background-color: #e9ec15;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 170rpx;
+    right: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+}
+.round-click navigator{
+    font-size: 40rpx;
+    max-width: 200rpx;
+    color: #fff;
+    text-align: center;
+}
+.round-click1 navigator{
+    font-size: 60rpx;
+    max-width: 200rpx;
+    color: #fff;
+    text-align: center;
+}
+
+.item{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+  border-bottom: 1px solid#777;
+
+}
+.desc{
+  margin-left: 20px;
+  line-height: 45px;
+ text-align: center;
+}
+
+.dian{
+  padding-left: 0px;
+  padding-top: 1.3px;
+  width: 6px;
+  float: left;
+}
+.ima {
+  background: #fff;
+  color: #fff;
+}
+
+.but {
+  background: #fff;
+}
+.name{
+  padding-left: 5px;
+  float: left;
+  color: #777;
+}
+.num {
+  padding-right: 2px;
+  float: right;
+  color: #777
+}
+
+.weui-panel:first-child {
+  margin-top:10px;
+}
+
+.newgroup{
+  margin:10px;
+  border-bottom: 1px solid#777;
+}
+

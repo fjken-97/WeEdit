@@ -1,11 +1,18 @@
 /**index.wxss**/
-
+ 
 .content{
-  margin:0px auto;width:100%;height:200px;
+  margin:0px auto;width:100%;height:180px;
   background:#ffffff
 }
-.content swiper{height:200px;}
-.slide-image{width: 100%;height: 100%}
+.content swiper{
+  height:90%;
+}
+
+.slide-image{
+  width: 91%;
+  height: 100%;
+  margin-left: 4%;
+  }
 /* 流动图片设置*/
 
 
@@ -17,11 +24,11 @@
 .nav-item{
   width:33.3%;
   margin-top:20px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .hr{
-  height: :15px;
+  height: 15px;
   background-color:#cccccc;
   margin-top:30px;
   opacity:0.4;
@@ -30,7 +37,7 @@
   display: flex;
   flex-direction: row;
   margin:10px;
-  font-size:13px;
+  font-size:15px;
   color:#999999;
 }
 .right{
@@ -105,4 +112,31 @@
 
 .usermotto {
   margin-top: 200px;
+}
+
+.intro {
+  margin: 50px;
+  text-align: center;
+}
+
+.search-wrapper{
+  width: 750rpx;
+  height: 100rpx;
+  background: #fff;
+  top: 0;
+  left: 0;
+}
+
+.search-input{
+  width: 700rpx;
+  height: 70rpx;
+  margin: 15rpx 20rpx;
+  display: inline-block;
+  vertical-align: middle;
+  background: #F6F6F6;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 70rpx;
+  color: #cdcdcd;
 }

@@ -1,0 +1,75 @@
+<view class="page">
+  <view class="weui-panel weui-panel_access">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_appmsg">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb user-face" src="{{createFace}}" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+
+          <view>
+            <view>
+              <view>
+                <view style="display: inline-block; vertical-align: middle">{{noticeTitle}}</view>
+                <view class="weui-badge" color="green" style="margin-left: 5px;">主题</view>
+              </view>
+
+            </view>
+          </view>
+
+
+          <view>
+            <view>
+              <view>
+                <view style="display: inline-block; vertical-align: middle">{{nickName}}</view>
+                <view class="weui-badge" color="green" style="margin-left: 5px;">发起人</view>
+              </view>
+
+            </view>
+          </view>
+
+
+
+          <view wx:if="{{type==1}}">
+
+            <view class="but" bindtap='modalinput'>
+              <image src="/image/common/xq.png" style="width:20px;height:5px;" />
+            </view>
+
+          </view>
+
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-media-box__desc">截止日期：{{deadLine}}</view>
+  <view class="ad_popArea" name="textarea">{{noticeText}}
+
+
+  </view>
+
+
+  <view wx:if="{{type==0}}" class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="noticeRead">确认阅读</button>
+  </view>
+
+
+
+
+
+
+  <modal hidden="{{hiddenmodalput}}" title="查看通知详情——已参与" cancel-text="关闭" confirm-text="未参与人员" bindconfirm="confirm" bindcancel="cancel">
+
+    <scroll-view class='scroll-y' wx:for="{{UserInfoBynoticeIDedList}}">
+      <view>昵称：{{item.nickName}}</view>
+      <view> </view>
+    </scroll-view>
+  </modal>
+
+  <modal hidden="{{hiddenmodalput1}}" title="查看通知详情——未参与" cancel-text="关闭" confirm-text="已参与人员" bindconfirm="confirm" bindcancel="cancel">
+    <scroll-view class='scroll-y' wx:for="{{UserInfoBynoticeIDingList}}">
+      昵称：{{item.nickName}}
+    </scroll-view>
+  </modal>
+
+</view>

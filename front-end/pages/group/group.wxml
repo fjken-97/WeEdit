@@ -1,0 +1,86 @@
+<!--pages/group/group.wxml-->
+
+<!--scroll-view class="scroll-y" wx:for="{{group}}">
+  <navigator style='display:inline; ' url="/pages/groupDetail/groupDetail?groupID={{item.groupID}}" hover-class="navigator-hover">
+    <view class="ima">
+      <button class='but'>
+        <view class='dian'>
+          <image src="/image/common/green.png" style="width:5px;height:5px;"></image>
+        </view>
+        <view>
+          <view class='name'>
+            {{item.groupName}}
+          </view>
+          <view>
+            当前组内人数{{item.size}}
+          </view>
+          <view>
+            创建者{{item.nickName}}
+          </view>
+        </view>
+      </button>
+    </view>
+  </navigator>
+  <view wx:if="{{item.userID==userID}}" class='num' bindtap='modalinput2' id="{{item.groupID}}">
+    <image src="/image/common/6.png" style="width:30px;height:30px;"></image>
+  </view>
+</scroll-view-->
+
+
+
+<view class="weui-panel__bd">
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__hd">我的小组</view>
+            
+
+<scroll-view class="scroll-y" wx:for="{{group}}">
+  <view class="weui-panel weui-panel_access">
+ 
+                <navigator url="/pages/groupDetail/groupDetail?groupID={{item.groupID}}&&userID={{item.userID}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                       <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                   <image class="weui-media-box__thumb" src="{{icon60}}" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">  {{item.groupName}}({{item.size}})</view>
+                        <view class="weui-media-box__desc"> {{item.groupIntro}}</view>
+                        <view class="weui-media-box__desc"> 创建者:{{item.nickName}}</view>
+                    </view>
+                </navigator>
+</view>
+</scroll-view>
+
+
+    <view class="weui-panel__ft">
+                <view class="weui-cell weui-cell_access weui-cell_link">
+                    <view class="weui-cell__bd">查看更多</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                </view>
+            </view>
+    </view>
+    </view>
+
+
+
+<!--圆形点击框  -->
+<button class="round-click1" bindtap='modalinput1'>
+  <navigator>+</navigator>
+</button>
+
+<!--圆形点击框  -->
+<button class="round-click" bindtap='modalinput'>
+  <navigator>new</navigator>
+</button>
+
+
+<modal hidden="{{hiddenmodalput}}" title="创建小组" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+  <input class="newgroup" type='text' placeholder="请输入小组名" bindinput='nameChange' />
+  <input class="newgroup" type='text' placeholder="请输入小组介绍" bindinput='introChange' />
+  <input class="newgroup" type='text' placeholder="请输入验证密钥" bindinput='secretChange' />
+</modal>
+<modal hidden="{{hiddenmodalput1}}" title="加入小组" confirm-text="提交" cancel-text="取消" bindcancel="cancel1" bindconfirm="confirm1">
+  <input class="newgroup" type='text' placeholder="请输入小组ID" bindinput='groupIDChange1' />
+  <input class="newgroup" type='text' placeholder="请输入验证密钥" bindinput='secretChange1' />
+</modal>
+<modal hidden="{{hiddenmodalput2}}" title="删除小组" confirm-text="提交" cancel-text="取消" bindcancel="cancel2" bindconfirm="confirm2">
+  <view>您确认要删除该小组吗？</view>
+</modal>

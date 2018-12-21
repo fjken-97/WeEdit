@@ -5,11 +5,11 @@ Page({
 messageBtn:function(options){
 
 wx.switchTab({
-  url: '../message/message',
+  url: '../Sign/Sign',
 })
 
 },
-
+ 
 
   SignBtn: function (options) {
 
@@ -29,8 +29,7 @@ wx.switchTab({
    */
   data: {
     imgUrls: [
-      '/image/海报/hello.png',
-      '/image/海报/首页转换图片.png'
+      '/image/common/hello.png',
     ],
     indicatorDots: true,
     interval: 5000,
@@ -47,8 +46,7 @@ wx.switchTab({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var array = this.initData();
-    this.setData({ array: array });
+    this.initData();
   },
 
   /**
@@ -62,7 +60,21 @@ wx.switchTab({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that = this
+    var app = getApp()
 
+    wx.request({
+      url: 'https://www.mingsonic.xyz/demo/superadmin/getGroupByUserID',
+      data: {
+        "userID": app.globalData.userID
+      },
+      method: 'GET',
+      success: function (res) {
+        
+        app.globalData.group = res.data.GroupInfoByUserID
+        
+      }
+    })
   },
 
   /**
@@ -83,24 +95,65 @@ wx.switchTab({
 
   initData: function () {
     var array = [];
+    var that = this
+    var app = getApp()
+    wx.request({
+      url: 'https://www.mingsonic.xyz/demo/superadmin/getLatestInfoByUserID',
+      data:{"userID":app.globalData.userID},
+      success:function(res){
+        console.log(res)
+        that.setData({
+          noticeList: res.data.NoticeInfoList,
+          voteList: res.data.VoteInfoList,
+          signList: res.data.SignInfoList
+        })
+        var j = 0;
+        for (var i = 0; i < that.data.noticeList.length; i++) {
+         
+          var object1 = new Object();
+          object1.img = '/image/common/write.png';
+          object1.title = that.data.noticeList[i].noticeTitle;
+          object1.type = that.data.noticeList[i].launchTime;
+          object1.pinglun = "发起人：Ming";
+          array[j] = object1;
+          j++;
+        }
+        for (var i = 0; i < that.data.signList.length; i++) {
 
-    var object1 = new Object();
-    object1.img = '/image/海报/酒店.png';
-    object1.title = '投票一周日去哪里玩';
-    object1.type = '2018-11-12  12:10';
-    object1.pinglun = '发起人：组长';
-    array[0] = object1;
+          var object1 = new Object();
+          object1.img = '/image/common/gouout.png';
+          object1.title = that.data.signList[i].signTitle;
+          object1.type = that.data.signList[i].launchTime;
+          object1.pinglun = "发起人：Ming";
+          array[j] = object1;
+          j++;
+        }
+        for (var i = 0; i < that.data.voteList.length; i++) {
 
-    var object2 = new Object();
-    object2.img = "/image/海报/文档.png";
-    object2.title = "共享文档——小组会议报告";
-    object2.type = "2018-11-11   12:30";
-    object2.pinglun = "发起人：XXX";
-    array[1] = object2;
+          var object1 = new Object();
+          object1.img = '/image/common/gouout.png';
+          object1.title = that.data.voteList[i].voteTitle;
+          object1.type = that.data.voteList[i].launchTime;
+          object1.pinglun = "发起人：Ming";
+          array[j] = object1;
+          j++;
+        }
+        that.setData({
+          array:array
+        })
+      }
+    })
+    
+    // var object2 = new Object();
+    // object2.img = "/image/common/gouout.png";
+    // object2.title = "共享文档——小组会议报告";
+    // object2.type = "2018-11-11   12:30";
+    // object2.pinglun = "发起人：XXX";
+    // array[1] = object2;
 
 
-
-    return array;
+    console.log(array)
+    
   },
 
 

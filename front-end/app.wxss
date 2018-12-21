@@ -1,4 +1,7 @@
 /**app.wxss**/
+
+@import 'style/weui.wxss';
+
 .container {
   height: 100%;
   display: flex;
@@ -7,4 +10,10 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+  background: #F0F0F0;
+  padding-bottom: 30px;
+}
+page{
+  
+    padding-bottom: 30px;
+}

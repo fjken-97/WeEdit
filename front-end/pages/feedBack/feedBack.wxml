@@ -1,0 +1,13 @@
+<view>
+  <view>您遇到的问题：</view>
+  <input bindinput='bugChange'></input>
+  <view>您觉得还有什么改进的空间：</view>
+  <input bindinput='adviceChange'></input>
+
+
+
+
+  <view>联系方式：（非必填)</view>
+  <input bindinput='typeChange'></input>
+  <button bindtap='confirm'>提交</button>
+</view>

@@ -1,45 +1,62 @@
 {
   "pages": [
-
     "pages/index/index",
-    "pages/me/me",
+    "pages/login/login",
     "pages/Vote/Vote",
-    "pages/Sign/Sign",
     "pages/publish/publish",
-    "pages/message/message",
-    "pages/practice/practice",
-    "pages/Edit/Edit",
-    "pages/Votes/Votes"
+    "pages/style/style",
+    "pages/detail/detail",
+    "pages/signs/signs",
+    "pages/launchVote/create",
+    "pages/group/group",
+    "pages/groupDetail/groupDetail",
+    "pages/voteDetail/detail",
+    "pages/signIn/signIn",
+    "pages/involved/involved",
+    "pages/Sign_all/Sign_all",
+    "pages/noticeDetail/detail",
+    "pages/signResult/signResult",
+    "pages/voteResult/voteResult",
+    "pages/noticeResult/noticeResult",
+    "pages/notice_all/notice_all",
+    "pages/feedBack/feedBack",
+    "pages/aboutUs/aboutUs",
+    "pages/helpDoc/helpDoc",
+    "pages/undoThings/undoThings",
+    "pages/list/list",
+    "pages/editor/editor",
+    "pages/viewer/viewer",
+    "pages/comment/comment"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#494949",
-    "navigationBarTitleText": "WeEdit",
-    "navigationBarTextStyle": "#ffffff"
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "selectedColor": "#cc1004",
-    "backgroundColor": "#ffffff",
-    "color": "#999999",
+    "color": "#000",
+    "selectedColor": "green",
     "borderStyle": "black",
+    "backgroundColor": "#fff",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "主页",
-        "iconPath": "/image/海报/主页（灰）.png",
-        "selectedIconPath": "/image/海报/主页（橙）.png"
+        "iconPath": "image/common/1.png",
+        "selectedIconPath": "image/common/1-1.png",
+        "text": "首页"
       },
       {
-        "pagePath": "pages/message/message",
-        "text": "发布",
-        "iconPath": "/image/海报/文件（灰）.png",
-        "selectedIconPath": "/image/海报/文件（橙）.png"
+        "pagePath": "pages/group/group",
+        "iconPath": "image/common/2.png",
+        "selectedIconPath": "image/common/2-2.png",
+        "text": "小组"
       },
       {
-        "pagePath": "pages/me/me",
-        "text": "我的",
-        "iconPath": "/image/海报/我（灰）.png",
-        "selectedIconPath": "/image/海报/我（橙）.png"
+        "pagePath": "pages/involved/involved",
+        "iconPath": "image/common/3.png",
+        "selectedIconPath": "image/common/3-3.png",
+        "text": "我的"
       }
     ]
   }

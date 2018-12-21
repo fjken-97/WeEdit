@@ -1,0 +1,123 @@
+<view class="row">
+  <lable class="title">事件名</lable>
+  <view class="info">
+    <input class="info-input" bindinput="handlethingsnameChange" placeholder="2~100个字" />
+  </view>
+</view>
+ 
+<view class="rows">
+  <lable class="title">描述(选填)</lable>
+  <view class="info">
+    <input class="info-input" bindinput="handlemaioshuChange" placeholder=" " />
+  </view>
+</view>
+
+
+
+<view class="weui-cells">
+  <view class="row">
+    <picker mode="date" value="{{date}}" start="1978-01-01" end="2020-01-23" bindchange="bindDateChange">
+      <!--view class="picker"-->
+
+      <lable class="titless1">签到日期:</lable>
+      <view class="info"> {{dates}}</view>
+      <!--
+     <label>签到日期: </label> <view class="info"> {{dates}}  </view>
+    </view-->
+    </picker>
+  </view>
+
+
+  <view class="row">
+    <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+      <lable class="titless1">开始时间:</lable>
+      <view class="info"> {{times}}</view>
+    </picker>
+  </view>
+
+  <!-- <view class="row">
+  <picker mode="date" value="{{date}}" start="1978-01-01" end="2020-1-23" bindchange="bindDatesChange">  
+    <view class="picker">  
+      结束日期: {{datess}}  
+    </view>  
+  </picker>
+  </view>  -->
+  <view class="row">
+    <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimesChange">
+      <lable class="titless1">结束时间:</lable>
+      <view class="info"> {{timess}}</view>
+
+    </picker>
+  </view>
+
+
+  <view class="row">
+    <lable class="titles">指定地点签到</lable>
+    <view class="info">
+      <radio-group bindchange="handleLocationChange">
+        <label>
+          <radio value="1" checked="{{isLocation==1}}" /> 是
+          <radio value="0" checked="{{isLocation!=1}}" />否
+        </label>
+      </radio-group>
+    </view>
+  </view>
+
+  <view hidden="{{isLocation!=1}}">
+    <view class="row">
+      <lable class="titless">地点:</lable>
+      <view class="info" bindtap="handleAddressClick"> {{address}}</view>
+    </view>
+
+    <view class="row">
+      <lable class="title">签到范围:</lable>
+      <view class="infos">
+
+        <input class="info-input" bindinput="handledistanceChange" placeholder="                                  米" />
+      </view>
+    </view>
+  </view>
+  <view class="row">
+    <lable class="titles">指定WiFi签到</lable>
+    <view class="info">
+      <radio-group bindchange="handleTypeChange">
+        <label>
+          <radio value="1" checked="{{isWifi==1}}" /> 是
+          <radio value="0" checked="{{isWifi!=1}}" />否
+        </label>
+      </radio-group>
+    </view>
+  </view>
+  <view wx:if="{{!success}}">
+    <view wx:if="{{isWifi==1}}" class='roww'>
+      当前已连接WiFi:{{SSID}}
+    </view>
+
+
+  </view>
+  <view class="weui-cells">
+
+
+
+    <view class="weui-cell weui-cell_select">
+      <view class="weui-cell__hd weui-cell__hd_in-select-after">
+        <view class="weui-label"> 选择小组</view>
+      </view>
+      <view class="weui-cell__bd">
+        <picker bindchange="bindGroupChange" value="groupIndex" range="{{userGroup}}" range-key="{{'groupName'}}">
+          <view class="weui-select weui-select_in-select-after">{{userGroup[groupIndex].groupName}}</view>
+        </picker>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="submit-button" bindtap='handleSubmit'>确定</view>
+</view>
+
+
+<view wx:if="{{success}}" class="success">
+  <view class="congratulation">
+    <icon type="success" size="24" class="success-icon" />提交成功!</view>
+  <button type="default" bindtap="handleBackTap" class="back-button">返回首页 </button>
+</view>

@@ -1,0 +1,66 @@
+<view class="mine-wrapper">
+  <view class="avatar-wrapper">
+    <view>
+      <view class="avatar">
+        <image style="border-radius:50%;" src="{{userInfo.avatarUrl}}"></image>
+      </view>
+      <view class="text">
+        <!-- <text wx:if="{{userInfo.nickName}}">{{userInfo.nickName}}\n</text>
+        <text wx:if="{{userInfo.selfIntro}}">{{userInfo.selfIntro}}</text> -->
+        <text>{{nickName}}\n</text>
+        <text>{{selfIntro}}</text>
+        <!-- <text wx:else bindtap="toLogin">注册 / 登录</text> -->
+      </view>
+    </view>
+  </view>
+  <view class="list-wrapper">
+    <view class="weui-cells weui-cells_after-title">
+      <block>
+        <view class="weui-cell weui-cell_access" bindtap='modalinput1' hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/image/common/个人2.png"></image>
+          </view>
+          <view class="weui-cell__bd">修改昵称</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+        <view class="weui-cell weui-cell_access" bindtap='modalinput2' hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/image/common/编辑.png"></image>
+          </view>
+          <view class="weui-cell__bd">修改签名</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </view>
+        <navigator url="/pages/helpDoc/helpDoc" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/image/common/游记.png"></image>
+          </view>
+          <view class="weui-cell__bd">帮助文档</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/feedBack/feedBack" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/image/common/复制1.png"></image>
+          </view>
+          <view class="weui-cell__bd">问卷反馈</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+        <navigator url="/pages/aboutUs/aboutUs" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__hd">
+            <image src="/image/common/智能优化.png"></image>
+          </view>
+          <view class="weui-cell__bd">关于我们</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>
+
+<modal hidden="{{hiddenmodalput1}}" title="修改昵称" confirm-text="提交" cancel-text="取消" bindcancel="cancel1" bindconfirm="confirm1">
+  <input type='text' placeholder="请输入新的昵称" bindinput='nameChange' />
+</modal>
+
+
+<modal hidden="{{hiddenmodalput2}}" title="修改自我介绍" confirm-text="提交" cancel-text="取消" bindcancel="cancel2" bindconfirm="confirm2">
+  <input type='text' placeholder="请输入新的自我介绍" bindinput='introChange' />
+</modal>

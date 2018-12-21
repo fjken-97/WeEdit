@@ -1,0 +1,85 @@
+
+<view class="page">
+
+ <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__bd">
+            <view  class="weui-media-box weui-media-box_appmsg">
+                <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                    <image class="weui-media-box__thumb user-face" src="{{createFace}}" />
+                </view>
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                 
+                  <view>
+            <view >
+               <view>
+          <view style="display: inline-block; vertical-align: middle">{{voteTitle}}</view>
+          <view class="weui-badge"  color="green" style="margin-left: 5px;">主题</view>
+        </view>
+               
+            </view></view>
+
+ <view>
+            <view >
+               <view>
+          <view style="display: inline-block; vertical-align: middle">{{nickName}}</view>
+          <view class="weui-badge"  color="green" style="margin-left: 5px;">发起人</view>
+        </view>
+               
+            </view></view>
+
+               
+                   
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+
+                    <view class="weui-media-box__desc">介绍：{{voteContent}}</view>
+  <view class="weui-panel weui-panel_access" style="padding-bottom:20px;" wx:for="{{VoteChoiceByVoteIDList}}">
+    <view class="weui-panel__hd">选项{{item.choiceNumber}}:{{item.choice}}({{item.choiceCount}}票)</view>
+    <view class="weui-panel__bd">
+      <view class="weui-progress">
+        <view class="weui-progress__bar">
+          <progress show-info='true' active-mode='String' percent="{{item.choiceCount*100/size}}" stroke-width="5" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class='scroll-y' wx:for="{{VoteCommByVoteIDList}}">
+  <view>评论</view>
+    <view wx:if="{{isFaceless==0}}">
+      {{item.nickName}}:
+    </view>
+    <view wx:elif="{{isFaceless==1}}">
+      ***:
+    </view>
+    <view>{{item.comment}}</view>
+  </scroll-view>
+
+<view wx:if="{{isFaceless==0}}">
+  <view wx:if="{{userID==nowUserID}}">
+  <button bindtap='modalinput'>查看投票详情</button>
+  </view>
+  </view>
+</view>
+
+
+<modal hidden="{{hiddenmodalput}}" title="查看投票详情——已参与" cancel-text="关闭" confirm-text="未参与人员" bindconfirm="confirm" bindcancel="cancel">
+
+  <scroll-view class='scroll-y' wx:for="{{UserInfoByVoteIDedList}}">
+    <view>昵称：{{item.nickName}}</view>
+    <view>时间：{{item.voteTime}}</view>
+    <view>选项：{{item.choiceNumber}}</view>
+    <view>——————————————————</view>
+  </scroll-view>
+</modal>
+
+<modal hidden="{{hiddenmodalput1}}" title="查看投票详情——未参与" cancel-text="关闭" confirm-text="已参与人员" bindconfirm="confirm" bindcancel="cancel">
+  <scroll-view class='scroll-y' wx:for="{{UserInfoByVoteIDingList}}">
+    昵称：{{item.nickName}}
+    <view>             </view>
+  </scroll-view>
+</modal>
